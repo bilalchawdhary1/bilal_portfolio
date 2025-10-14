@@ -42,8 +42,8 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex justify-between items-center h-16'>
+      <div className='max-w-full mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='flex justify-between items-center p-6 m-7 h-16'>
           {/* Logo */}
           <motion.div whileHover={{scale: 1.05}} className='flex-shrink-0'>
             <span className='text-2xl font-bold text-indigo-600'>MB</span>
