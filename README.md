@@ -1,130 +1,74 @@
-# Muhammad Bilal - Portfolio Website
+# NexTemp | A Next.js Personal Web App
 
-A modern, responsive portfolio website built with Next.js 15, Tailwind CSS, and Framer Motion.
+![NexTemp - A Next.js Personal Web App](https://github.com/lilxyzz/nextemp/blob/main/public/NexTemp-cover.png)
 
-## 🚀 Features
+NexTemp - A bespoke **template** for your **next** web project. NexTemp is a personal portfolio and blog theme built around Next.js. It features a modern, clean, and responsive design, perfect for developers or anyone looking to showcase their work and ideas. For more themes and updates, stay tuned.
 
-- **Modern Design**: Clean, minimal aesthetic inspired by Apple and Vercel
-- **Fully Responsive**: Optimized for desktop, tablet, and mobile devices
-- **Smooth Animations**: Framer Motion animations and hover effects
-- **SEO Optimized**: Meta tags, Open Graph, and Twitter Card support
-- **Performance**: Built with Next.js 15 and optimized for speed
-- **Accessibility**: Proper focus states and keyboard navigation
+## 📚 Tech Stack
+Next.js 14+
+React 18+
+Tailwind CSS 3+
+Framer Motion 11+
 
-## 🛠️ Tech Stack
+## ✨ Features
+- Dark and light color mode 
+- Reusable Components
+- Blog post creation
+- Animations with Framer Motion
+- Tailwind CSS integration
+- Mobile-first responsive layout
+- Sitemap support
+- 95+ Lighthouse
 
-- **Framework**: Next.js 15 (App Router)
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Font**: Poppins (Google Fonts)
-- **Deployment**: Vercel Ready
+## 🚀 NexTemp Pro Coming Soon
+**Features**
+- SEO optimised 
+- Post tags and categories
+- Integration with Hashnode CMS for easy post publishing
+- PWA support
+  
 
-## 📁 Project Structure
+### 🛠️ Requirements
 
-```
-bilal_portfolio/
-├── app/
-│   ├── globals.css
-│   ├── layout.js
-│   └── page.js
-├── components/
-│   ├── Navbar.js
-│   ├── Hero.js
-│   ├── About.js
-│   ├── Skills.js
-│   ├── ProjectCard.js
-│   ├── Projects.js
-│   ├── Contact.js
-│   └── Footer.js
-├── utils/
-│   └── data.js
-└── public/
-    └── Muhammad Bilal Dev.pdf
-```
+- Node 18+
+  - https://nodejs.org/en
+- Yarn
+  - https://classic.yarnpkg.com/en/docs/getting-started
 
-## 🎨 Sections
 
-1. **Hero**: Introduction with call-to-action buttons
-2. **About**: Professional summary with stats and profile
-3. **Skills**: Technical skills with progress bars
-4. **Projects**: Featured and other projects showcase
-5. **Contact**: Contact form and social links
-6. **Footer**: Additional links and copyright
 
-## 🚀 Getting Started
+## 🎬 Getting Started
 
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/lilxyzz/nextemp.git
+    ```
 
-2. **Run development server**:
-   ```bash
-   npm run dev
-   ```
+2. Navigate into the repository:
+    ```bash
+    cd NexTemp
+    ```
 
-3. **Open in browser**:
-   Navigate to [http://localhost:3000](http://localhost:3000)
+3. Install the dependencies:
+    ```bash
+    yarn
+    ```
 
-## 📦 Build for Production
+4. Run the development server:
+    ```bash
+    yarn dev
+    ```
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-npm run build
-npm start
-```
 
-## 🌐 Deployment
+#### 🙏 Thanks
+If you like this theme, don't forget to give it a ⭐.
 
-This project is optimized for Vercel deployment:
+#### 🤝 Contributing
+Got enhancements you envision? Contributions are welcome! Fork the repo, push your changes, and submit a pull request. Let's make this theme better, together.
 
-1. Push to GitHub
-2. Connect to Vercel
-3. Deploy automatically
+#### 👾 Issues
+For any challenges encountered, please feel free to report issues through our issue tracker.
 
-## 🎯 Customization
-
-### Personal Information
-Update `utils/data.js` with your personal information:
-- Name, role, location
-- Bio and skills
-- Project details
-- Social links
-
-### Styling
-- Colors: Modify Tailwind classes in components
-- Fonts: Update font imports in `layout.js`
-- Animations: Adjust Framer Motion properties
-
-### Content
-- Projects: Add/remove projects in `utils/data.js`
-- Skills: Update skill categories and levels
-- Contact: Modify contact information
-
-## 📱 Responsive Breakpoints
-
-- **Mobile**: < 768px
-- **Tablet**: 768px - 1024px
-- **Desktop**: > 1024px
-
-## ⚡ Performance Features
-
-- Image optimization with Next.js
-- Font optimization with Google Fonts
-- CSS purging with Tailwind
-- Smooth scrolling and animations
-- Lazy loading for better performance
-
-## 🔧 Available Scripts
-
-- `npm run dev`: Start development server
-- `npm run build`: Build for production
-- `npm start`: Start production server
-
-## 📄 License
-
-© 2025 Muhammad Bilal — All Rights Reserved
-
----
-
-Built with ❤️ in Lahore, Pakistan
+#### 📝 License
+This project is open source and available under the MIT License.
