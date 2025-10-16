@@ -7,12 +7,12 @@ import Link from "next/link";
 import {useRef} from "react";
 import {HireMe2} from "@/components/HireMe2";
 
-import stylonext from "/public/images/projects/stylonext.png";
-import dashbord from "/public/images/projects/dashbord.png";
-import gymvibe from "/public/images/projects/gymvibe.png";
-import chiniotfobrics from "/public/images/projects/chiniotfobrics.png";
-import adsanalytica from "/public/images/projects/adsanalytica.png";
-import loading from "/public/images/articles/GTA6-VICE.gif";
+import stylonext from "../../public/images/projects/stylonext.png";
+import dashbord from "../../public/images/projects/dashbord.png";
+import gymvibe from "../../public/images/projects/gymvibe.png";
+import chiniotfobrics from "../../public/images/projects/chiniotfobrics.png";
+import adsanalytica from "../../public/images/projects/adsanalytica.png";
+import loading from "../../public/images/articles/GTA6-VICE.gif";
 
 import TransitionEffect from "@/components/TransitionEffect";
 import {motion, useMotionValue} from "framer-motion";
