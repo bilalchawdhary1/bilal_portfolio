@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 
 export function useThemeSwitch() {
   const preferDarkQuery = "(prefers-color-scheme: dark)";
-  const [mode, setMode] = useState("");
+  const [mode, setMode] = useState("light");
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(preferDarkQuery);

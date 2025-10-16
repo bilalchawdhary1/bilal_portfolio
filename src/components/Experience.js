@@ -58,21 +58,29 @@ const Experience = () => {
 
         <ul className='w-full flex flex-col items-start justify-between ml-4 xs:ml-2'>
           <Details
-            position='Developer'
-            company='Stellar Innovations'
-            time='2020 - 2024'
-            address='200 Innovations st'
-            companyLink='https://github.com/lilxyzz/clay-theme'
-            work="At Stellar Innovations, I serve as a web developer, where I play a crucial role in designing and implementing cutting-edge web solutions. My responsibilities include developing responsive and high-performance websites and applications using technologies such as HTML, CSS, JavaScript, React, and Node.js. I collaborate closely with cross-functional teams to ensure our projects meet the highest standards of functionality and user experience. One of my key achievements at Stellar Innovations has been leading the development of a comprehensive e-commerce platform that significantly enhanced our client's online presence and sales. My work is driven by a passion for continuous learning and innovation, always striving to push the boundaries of what's possible in web development."
+            position='Full Stack Developer (Freelance)'
+            company='Upwork & Fiverr'
+            time='2022 - Present'
+            address='Remote | Worldwide Clients'
+            companyLink='https://github.com/bilalchawdhary1'
+            work='As a freelance Full Stack Developer, I specialize in building modern, scalable, and responsive web applications for international clients. My expertise includes React.js, Next.js, Node.js, Express.js, and MongoDB, with a strong focus on clean UI and high-performance code. I’ve successfully delivered projects such as StyleNest (eCommerce store), Ads Analytica (agency site), GymVibe (fitness app), and an Oman client dashboard for business management. I’m passionate about creating impactful digital experiences that combine technical excellence with intuitive design.'
           />
 
           <Details
-            position='Rad Tester'
-            company='Vault Technologies'
-            time='2018 - 2020'
-            address='404 Tech st'
-            companyLink='https://github.com/lilxyzz/holo-theme'
-            work='At Vault Technologies, I worked as a RAD (Rapid Application Development) Tester, where I was responsible for ensuring the quality and functionality of our software applications during the development process. My role involved designing and executing test plans, identifying and documenting bugs, and working closely with developers to resolve issues quickly. This position required a deep understanding of the software development lifecycle and a keen eye for detail to ensure our applications met the highest standards of performance and reliability. My contributions at Vault Technologies helped streamline our development processes and significantly improved the overall quality of our software products.'
+            position='Frontend Developer'
+            company='Ads Analytica'
+            time='2023 - 2025'
+            address='Remote'
+            companyLink='https://adsanalytica.com/'
+            work='At Ads Analytica, I worked as a Frontend Developer where I was responsible for developing, optimizing, and maintaining client websites using Next.js, React.js, and Tailwind CSS. I collaborated with cross-functional teams to deliver visually appealing, SEO-friendly, and high-performing web applications. Some notable projects include Go-Invest, Ahtshamul Haq Portfolio, and the company’s official website built with Next.js.'
+          />
+          <Details
+            position='Frontend Developer Intern'
+            company='Gamca Cloud'
+            time='2022 - 2023'
+            address='Remote'
+            companyLink='https://github.com/bilalchawdhary1'
+            work='During my internship at Gamca Cloud, I focused on learning and implementing core front-end technologies, including HTML, CSS, JavaScript, and React.js. I built several small-scale projects that improved my understanding of responsive design, component-based development, and web application structure.'
           />
         </ul>
       </div>
