@@ -5,7 +5,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import TransitionEffect from "@/components/TransitionEffect";
-import profilePic from "../../public/images/profile/Riley.png";
+// import profilePic from "../../public/images/profile/Riley.png";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 
@@ -30,7 +30,7 @@ export default function Home() {
               {
                 <Image
                   priority={true}
-                  src={profilePic}
+                  src='/images/profile/Riley.png'
                   alt='image'
                   className='h-auto w-100'
                   height={340}
