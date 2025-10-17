@@ -21,26 +21,22 @@ export default function About() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const myForm = e.target;
-    const formData = new FormData(myForm);
+
     try {
       const response = await fetch("/api/sendMail", {
         method: "POST",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/json",
         },
-        body: new URLSearchParams(formData).toString(),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        // Handle success, e.g., redirect to a thank you page
-        router.push("/thanks");
+        router.push("/thanks"); // success page
       } else {
-        // Handle error
-        console.error("Form submission failed!", response);
+        console.error("Form submission failed!", await response.text());
       }
     } catch (error) {
-      // Handle error
       console.error("An error occurred during form submission:", error);
     }
   };
