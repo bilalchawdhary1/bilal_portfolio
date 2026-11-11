@@ -40,8 +40,10 @@ export default function HeroVisual() {
     if (!visual) return undefined;
 
     if (!("IntersectionObserver" in window)) {
-      setIsInView(true);
-      return undefined;
+      const fallbackFrame = window.requestAnimationFrame(() =>
+        setIsInView(true),
+      );
+      return () => window.cancelAnimationFrame(fallbackFrame);
     }
 
     const observer = new IntersectionObserver(

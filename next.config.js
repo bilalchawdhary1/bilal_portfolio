@@ -10,6 +10,9 @@ if (parsedSiteUrl.protocol !== "http:" && parsedSiteUrl.protocol !== "https:") {
 
 const nextConfig = {
   reactStrictMode: true,
+  turbopack: {
+    root: __dirname,
+  },
   env: {
     NEXT_PUBLIC_SITE_URL: parsedSiteUrl.origin,
   },

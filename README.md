@@ -75,7 +75,7 @@ I work across AI application development and backend engineering, from LLM integ
 
 ### Requirements
 
-- Node.js 18.17 or newer
+- Node.js 20.9 or newer
 - npm
 
 ### Install and start
@@ -105,7 +105,7 @@ Use a Gmail app password, not your account password. Keep real credentials out o
 | Command | Purpose |
 | --- | --- |
 | `npm run dev` | Start the local development server |
-| `npm run lint` | Run the Next.js ESLint checks |
+| `npm run lint` | Run ESLint with the Next.js Core Web Vitals configuration |
 | `npm run build` | Create the production build and generate sitemap files |
 | `npm start` | Serve the production build locally |
 
