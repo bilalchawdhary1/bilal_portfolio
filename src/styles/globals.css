@@ -2,21 +2,280 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Projects and Articles image background black*/
-img.h-auto.w-full {background: black !important;}
-img.w-full.max-h-80.object-cover {background: black !important;}
+html {
+  scroll-behavior: smooth;
+}
 
-/* Profile image shadow*/
-img.h-auto.w-100 { filter: drop-shadow(0 0 0.25rem black);}
+body {
+  @apply bg-light text-dark antialiased dark:bg-dark dark:text-light;
+}
 
-/* max width before main*/
-div#__next { max-width: 1900px; margin-right: auto; margin-left: auto;}
+body {
+  background-image:
+    radial-gradient(ellipse at 12% 9%, rgb(82 127 202 / 5%), transparent 26rem),
+    radial-gradient(ellipse at 88% 38%, rgb(82 127 202 / 4%), transparent 30rem);
+}
 
-/* Homepage min Height */
-.min-h-screen {min-height: 90vh;}
+.dark body {
+  background-image:
+    radial-gradient(ellipse at 12% 9%, rgb(78 121 201 / 10%), transparent 28rem),
+    radial-gradient(ellipse at 88% 38%, rgb(49 92 155 / 8%), transparent 32rem);
+}
 
-/* Contact form outline */
-textarea:focus, input:focus {outline: none;}
+div#__next {
+  min-height: 100vh;
+}
 
-/* Projects and Articles image border black*/
-img.h-auto.w-full {border: 2px solid black; border-radius: 10px;}
+.portfolio-atmosphere {
+  contain: strict;
+}
+
+.portfolio-atmosphere-glow {
+  background:
+    radial-gradient(ellipse at 14% 12%, rgb(91 143 226 / 5%), transparent 34%),
+    radial-gradient(ellipse at 88% 42%, rgb(80 131 212 / 4%), transparent 36%);
+}
+
+.dark .portfolio-atmosphere-glow {
+  background:
+    radial-gradient(ellipse at 14% 12%, rgb(71 123 206 / 10%), transparent 35%),
+    radial-gradient(ellipse at 88% 42%, rgb(52 96 165 / 9%), transparent 38%);
+}
+
+.surface-card {
+  border-color: rgb(27 27 27 / 9%);
+  background-color: rgb(255 255 255 / 76%);
+  backdrop-filter: blur(10px);
+}
+
+.dark .surface-card {
+  border-color: rgb(255 255 255 / 10%);
+  background-color: rgb(29 34 44 / 76%);
+}
+
+.surface-card-interactive {
+  transition:
+    transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease;
+}
+
+.surface-card-interactive:hover {
+  transform: translateY(-3px);
+  border-color: rgb(66 99 235 / 28%);
+  box-shadow: 0 16px 34px -28px rgb(22 42 79 / 36%);
+}
+
+.dark .surface-card-interactive:hover {
+  border-color: rgb(91 143 226 / 38%);
+  box-shadow: 0 18px 38px -28px rgb(0 0 0 / 65%);
+}
+
+.site-nav-link {
+  position: relative;
+}
+
+.site-nav-link::after {
+  position: absolute;
+  right: 0.25rem;
+  bottom: 0.15rem;
+  left: 0.25rem;
+  height: 1.5px;
+  border-radius: 999px;
+  background-color: currentColor;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 200ms ease;
+}
+
+.site-nav-link[aria-current="page"]::after,
+.site-nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.experience-entry {
+  position: relative;
+  border-left-width: 2px;
+  border-left-color: rgb(66 99 235 / 25%);
+}
+
+.experience-entry::before {
+  position: absolute;
+  top: 1.35rem;
+  left: -5px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #f5f5f5;
+  border-radius: 50%;
+  background-color: #4263eb;
+  content: "";
+}
+
+.dark .experience-entry {
+  border-left-color: rgb(91 143 226 / 34%);
+}
+
+.dark .experience-entry::before {
+  border-color: #1b1b1b;
+  background-color: #6a98f1;
+}
+
+*:focus-visible {
+  outline: 2px solid #4263eb;
+  outline-offset: 3px;
+}
+
+::selection {
+  @apply bg-dark text-light dark:bg-light dark:text-dark;
+}
+
+.hero-enter {
+  animation: hero-enter 650ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero-enter-1 {
+  animation-delay: 80ms;
+}
+
+.hero-enter-2 {
+  animation-delay: 150ms;
+}
+
+.hero-enter-3 {
+  animation-delay: 220ms;
+}
+
+.hero-enter-4 {
+  animation-delay: 300ms;
+}
+
+.hero-enter-5 {
+  animation-delay: 380ms;
+}
+
+.hero-visual-card {
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hero-visual-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 36px -24px rgb(27 27 27 / 28%);
+  }
+}
+
+  a,
+  button,
+  input,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input,
+  textarea {
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      background-color 180ms ease;
+  }
+
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: none;
+    border-color: #4263eb;
+    box-shadow: 0 0 0 3px rgb(66 99 235 / 13%);
+  }
+
+  @keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal-pending {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 500ms ease,
+    transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--scroll-reveal-delay, 0ms);
+}
+
+.scroll-reveal-pending.scroll-reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  a:hover,
+  button:hover {
+    transform: none !important;
+  }
+
+  .scroll-reveal-pending,
+  .scroll-reveal-pending.scroll-reveal-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero-enter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-fallback-flow {
+    display: none;
+  }
+
+  .hero-visual-card,
+  .hero-visual-card:hover {
+    transform: none;
+    transition: none;
+  }
+
+  .surface-card-interactive,
+  .surface-card-interactive:hover {
+    transform: none;
+    transition: none;
+  }
+
+  .site-nav-link::after {
+    transition: none;
+  }
+
+  input,
+  textarea {
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 767px), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .portfolio-atmosphere > canvas {
+    display: none;
+  }
+}

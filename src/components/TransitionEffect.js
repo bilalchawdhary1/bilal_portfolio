@@ -1,29 +1,19 @@
-import { motion } from "framer-motion";
-import React from "react";
+import {motion} from "framer-motion";
 
 const TransitionEffect = () => {
   return (
-    <>
-      <motion.div
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-30 bg-slideGreen"
-        initial={{ x: "100%", width: "100%" }}
-        animate={{ x: "0%", width: "0%" }}
-        exit={{ x: ["0%", "100%"], width: ["0%", "100%"] }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-20 bg-light dark:bg-dark"
-        initial={{ x: "100%", width: "100%" }}
-        animate={{ x: "0%", width: "0%" }}
-        transition={{ delay: 0.2, duration: 0.8, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-10 bg-dark dark:bg-light"
-        initial={{ x: "100%", width: "100%" }}
-        animate={{ x: "0%", width: "0%" }}
-        transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
-      />
-    </>
+    <motion.div
+      aria-hidden='true'
+      className='pointer-events-none fixed inset-0 z-[60]'
+      style={{
+        background:
+          "linear-gradient(112deg, transparent 38%, rgba(84, 132, 218, 0.12) 50%, transparent 62%)",
+      }}
+      initial={{opacity: 0, x: "-12%"}}
+      animate={{opacity: 1, x: "0%"}}
+      exit={{opacity: 0, x: "12%"}}
+      transition={{duration: 0.32, ease: "easeOut"}}
+    />
   );
 };
 

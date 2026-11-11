@@ -1,6 +1,6 @@
 import AnimatedText from "@/components/AnimatedText";
 import {motion, useMotionValue} from "framer-motion";
-import Head from "next/head";
+import SEO from "@/components/SEO";
 import Image from "next/image";
 import blog1 from "../../public/images/articles/Clay-Gatsby-theme.webp";
 import blog2 from "../../public/images/articles/My-MacBook-Setup-For-Development-2024.webp";
@@ -20,13 +20,14 @@ const MovingImg = ({title, img, link}) => {
   const imgRef = useRef(null);
 
   function handleMouse(event) {
+    if (!imgRef.current) return;
     imgRef.current.style.display = "inline-block";
-    x.set(event.pageX);
-    y.set(-10);
+    x.set(event.clientX + 16);
+    y.set(event.clientY + 16);
   }
 
-  function handleMouseLeave(event) {
-    imgRef.current.style.display = "none";
+  function handleMouseLeave() {
+    if (imgRef.current) imgRef.current.style.display = "none";
     x.set(0);
     y.set(0);
   }
@@ -35,6 +36,7 @@ const MovingImg = ({title, img, link}) => {
       <Link
         href={link}
         target={"_blank"}
+        rel='noopener noreferrer'
         className='relative'
         onMouseMove={handleMouse}
         onMouseLeave={handleMouseLeave}
@@ -46,7 +48,7 @@ const MovingImg = ({title, img, link}) => {
           src={img}
           ref={imgRef}
           alt={title}
-          className='w-96 h-auto z-10 hidden absolute rounded-lg md:!hidden'
+          className='fixed left-0 top-0 z-30 hidden h-auto w-72 rounded-xl border border-dark/10 shadow-2xl shadow-dark/20 md:!hidden dark:border-light/15'
           initial={{opacity: 0}}
           whileInView={{opacity: 1, transition: {duration: 0.2}}}
           style={{
@@ -65,18 +67,18 @@ const MovingImg = ({title, img, link}) => {
 const Article = ({img, title, date, link}) => {
   return (
     <motion.li
-      initial={{y: 200}}
-      whileInView={{y: 0, transition: {duration: 0.5, ease: "easeInOut"}}}
+      initial={{opacity: 0, y: 18}}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        transition: {duration: 0.42, ease: "easeOut"},
+      }}
       viewport={{once: true}}
-      className='relative w-full p-4 py-6 my-2 rounded-xl flex sm:flex-col justify-between 
-      bg-light text-dark first:mt-0 border border-solid border-dark
-      border-r-4 border-b-4 dark:bg-dark dark:border-light
-      '
+      className='surface-card surface-card-interactive relative my-2 flex w-full items-center justify-between rounded-2xl border p-5 text-dark first:mt-0 sm:flex-col sm:items-start sm:gap-3 dark:text-light'
     >
       <MovingImg img={img} title={title} link={link} />
       <span
-        className='text-primary font-semibold dark:text-primaryDark min-w-max pl-4 sm:self-start 
-      sm:pl-0 xs:text-sm'
+        className='min-w-max pl-4 font-semibold text-primary dark:text-primaryDark sm:self-start sm:pl-0 xs:text-sm'
       >
         {date}
       </span>
@@ -84,44 +86,38 @@ const Article = ({img, title, date, link}) => {
   );
 };
 
-const FeaturedArticle = ({img, title, time, summary, link}) => {
+const FeaturedArticle = ({img, title, time, summary, link, priority = false}) => {
   return (
     <li
-      className='relative w-full p-4 col-span-1 bg-light border border-dark border-solid rounded-2xl 
-    dark:bg-dark dark:border-light'
+      className='surface-card surface-card-interactive relative col-span-1 w-full rounded-2xl border p-4'
     >
-      <div
-        className='absolute  top-0 -right-3 w-[102%] h-[103%] rounded-[2rem]  rounded-br-3xl bg-dark 
-        -z-10  '
-      />
-      <div
-        className='absolute  top-0 -right-3 -z-10 h-[103%] w-[102%] rounded-[2rem] rounded-br-3xl bg-dark
-         dark:bg-light  md:-right-2 md:w-[101%] xs:h-[102%]
-        xs:rounded-[1.5rem]  '
-      />
       <Link
         href={link}
         target={"_blank"}
-        className='inline-block rounded-lg overflow-hidden w-full'
+        rel='noopener noreferrer'
+        className='inline-block w-full overflow-hidden rounded-xl'
       >
         <FramerImage
           src={img}
           alt={title}
-          className='w-full max-h-80 object-cover'
+          className='h-64 w-full object-cover sm:h-52'
           whileHover={{scale: 1.05}}
-          transition={{duration: 0.2}}
-          sizes='100vw'
-          priority
+          transition={{duration: 0.3, ease: "easeOut"}}
+          sizes='(max-width: 639px) calc(100vw - 4.5rem),
+            (max-width: 767px) calc(100vw - 6rem),
+            (max-width: 1279px) calc((100vw - 12rem) / 2),
+            34rem'
+          priority={priority}
         />
       </Link>
 
-      <Link href={link} target={"_blank"}>
-        <h2 className='capitalize text-2xl font-bold my-2 mt-4 hover:underline xs:text-lg'>
+      <Link href={link} target={"_blank"} rel='noopener noreferrer'>
+        <h2 className='my-2 mt-4 text-xl font-bold leading-snug hover:text-primary dark:hover:text-primaryDark xs:text-lg'>
           {title}
         </h2>
       </Link>
-      <p className='text-sm  mb-2'>{summary}</p>
-      <span className='text-primary font-semibold dark:text-primaryDark'>
+      <p className='mb-3 text-sm leading-6 text-dark/70 dark:text-light/70'>{summary}</p>
+      <span className='text-sm font-semibold text-primary dark:text-primaryDark'>
         {time}
       </span>
     </li>
@@ -131,29 +127,28 @@ const FeaturedArticle = ({img, title, time, summary, link}) => {
 export default function Articles() {
   return (
     <>
-      <Head>
-        <title>Development Articles | By NexTemp</title>
-        <meta
-          name='description'
-          content='NexTemp, A open-source portfolio theme built with Nextjs'
-        />
-      </Head>
+      <SEO
+        title='Articles and Resources | Muhammad Bilal'
+        description='Selected web development articles and reading resources.'
+        path='/articles'
+      />
       <TransitionEffect />
       <main
-        className={`w-full mb-16 flex flex-col items-center justify-center dark:text-light overflow-hidden`}
+        className='mb-16 flex w-full flex-col items-center justify-center overflow-hidden dark:text-light'
       >
         <Layout className='pt-16'>
           <AnimatedText
             text='Words Influence the World 🌎'
-            className='!text-8xl !leading-tight mb-16 lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8'
+            className='!mb-12 !text-5xl !leading-tight !tracking-tight lg:!text-5xl sm:!mb-8 sm:!text-4xl'
           />
-          <ul className='grid grid-cols-2 gap-16 lg:gap-8 md:grid-cols-1 md:gap-y-16'>
+          <ul className='grid grid-cols-2 gap-6 lg:gap-5 md:grid-cols-1'>
             <FeaturedArticle
               img={blog1}
               title='Unlocking the Power of Gatsby & Netlify'
               time='2 min read'
               summary='Image-centric Gatsby theme for publishers, portfolio, photographers blogs and more.'
               link='https://travislord.xyz/articles/guide-to-clay-theme-gatsby-web-app'
+              priority
             />
 
             <FeaturedArticle
@@ -165,11 +160,11 @@ export default function Articles() {
             />
           </ul>
 
-          <h2 className='font-bold text-4xl w-full text-center mt-32 my-16'>
+          <h2 className='mb-8 mt-20 w-full text-center text-3xl font-bold tracking-tight sm:mt-14 sm:text-2xl'>
             All Articles
           </h2>
 
-          <ul className='flex flex-col items-center relative'>
+          <ul className='relative flex flex-col items-center'>
             <Article
               title='Adding more soon, thanks for the interest!'
               img={loading}
@@ -179,26 +174,18 @@ export default function Articles() {
             />
           </ul>
 
-          <div className='mt-2 flex items-center justify-between gap-3 grid-cols-2'>
+          <div className='mt-6 flex flex-wrap items-center gap-3'>
             <Link
               href='/about/'
               target={"_self"}
-              className={`flex items-center rounded-lg border-2 border-solid bg-light p-2.5 px-6 text-lg font-semibold
-            capitalize text-dark hover:border-light hover:bg-dark hover:text-light 
-            dark:bg-dark dark:text-light dark:hover:bg-light dark:hover:text-dark
-            md:p-2 md:px-4 md:text-base
-             `}
+              className='inline-flex min-h-11 items-center rounded-lg border border-dark/20 px-5 py-3 text-sm font-semibold transition-colors hover:border-primary hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light/20 dark:hover:border-primaryDark dark:hover:text-primaryDark dark:focus-visible:ring-primaryDark'
             >
               Get To Know Me
             </Link>
             <Link
               href='/projects/'
               target={"_self"}
-              className={`flex items-center rounded-lg border-2 border-solid bg-dark p-2.5 px-6 text-lg font-semibold
-            capitalize text-light hover:border-dark hover:bg-transparent hover:text-dark 
-            dark:bg-light dark:text-dark dark:hover:border-light dark:hover:bg-dark dark:hover:text-light
-            md:p-2 md:px-4 md:text-base
-             `}
+              className='inline-flex min-h-11 items-center rounded-lg border border-dark bg-dark px-5 py-3 text-sm font-semibold text-light transition-colors hover:bg-transparent hover:text-dark focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light dark:bg-light dark:text-dark dark:hover:bg-dark dark:hover:text-light dark:focus-visible:ring-primaryDark'
             >
               View Projects
             </Link>

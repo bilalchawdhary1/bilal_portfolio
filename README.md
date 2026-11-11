@@ -1,81 +1,124 @@
-# Muhammad Bilal | A Next.js Personal Web App
+# Muhammad Bilal
 
-![Muhammad Bilal - A Next.js Personal Web App](https://github.com/bilalchawdhary1/Muhammad Bilal/blob/main/public/Muhammad Bilal-cover.png)
+## AI Application Developer | Python Backend Engineer
 
-Muhammad Bilal - A bespoke **template** for your **next** web project. Muhammad Bilal is a personal portfolio and blog theme built around Next.js. It features a modern, clean, and responsive design, perfect for developers or anyone looking to showcase their work and ideas. For more themes and updates, stay tuned.
+I build practical AI-powered applications, integrate large language models into products, and develop reliable Python backend systems.
 
-## 📚 Tech Stack
+- **Portfolio:** [muhammadbilal-lime.vercel.app](https://muhammadbilal-lime.vercel.app/)
+- **LinkedIn:** [bilal-fullstack](https://www.linkedin.com/in/bilal-fullstack)
+- **GitHub:** [bilalchawdhary1](https://github.com/bilalchawdhary1)
+- **Email:** [chbilalc627@gmail.com](mailto:chbilalc627@gmail.com)
 
-Next.js 14+
-React 18+
-Tailwind CSS 3+
-Framer Motion 11+
+> Deployment note: the configured portfolio URL returned HTTP 404 during the latest repository audit. Verify the deployment or update the URL before sharing this README publicly.
 
-## ✨ Features
+## About
 
-- Dark and light color mode
-- Reusable Components
-- Blog post creation
-- Animations with Framer Motion
-- Tailwind CSS integration
-- Mobile-first responsive layout
-- Sitemap support
-- 95+ Lighthouse
+I work across AI application development and backend engineering, from LLM integrations and intelligent workflows to APIs, databases, and full-stack SaaS products. My focus is on building useful, maintainable software around real product needs.
 
-## 🚀 Muhammad Bilal Pro Coming Soon
+## Services
 
-**Features**
+- AI application, agent, and chatbot development
+- OpenAI and Google Gemini integration
+- LLM integration and prompt engineering
+- Python and FastAPI backend development
+- REST API and PostgreSQL integration
+- Full-stack SaaS development and AI workflow automation
 
-- SEO optimised
-- Post tags and categories
-- Integration with Hashnode CMS for easy post publishing
-- PWA support
+## Technology
 
-### 🛠️ Requirements
+- **Backend:** Python, FastAPI, REST APIs, SQL
+- **AI:** OpenAI, Google Gemini, LLM integration, prompt engineering
+- **Data:** PostgreSQL, MongoDB
+- **Frontend:** React, Next.js, TypeScript, JavaScript
+- **Tools and styling:** Git, GitHub, Tailwind CSS
 
-- Node 18+
-  - https://nodejs.org/en
-- Yarn
-  - https://classic.yarnpkg.com/en/docs/getting-started
+## Selected Projects
 
-## 🎬 Getting Started
+| Project | Overview | Links |
+| --- | --- | --- |
+| **SharpBuild AI Website Assistant** | A website knowledge assistant that answers from published content, cites sources, streams responses, and offers a human contact path. | [Source](https://github.com/bilalchawdhary1/SharpBuild-AI-Website-Assistant) |
+| **Mentra** | A tutorial-based voice learning platform with AI tutors, bookmarks, and recent sessions. | [Source](https://github.com/bilalchawdhary1/Mentra) |
+| **CareerVamp** | An AI-powered job application and resume platform. | Preview below |
+| **AI Mock Interview Platform** | An AI-powered interview practice application. | Preview below |
+| **StyleNest** | An e-commerce web application. | [Live project](https://style-nest-com.vercel.app/) · [Source](https://github.com/bilalchawdhary1/StyleNest.com) |
 
-1. Clone the repository:
+### Project previews
 
-   ```bash
-   git clone https://github.com/bilalchawdhary1/Muhammad Bilal.git
-   ```
+![Mentra project preview](public/images/projects/Mentra.png)
 
-2. Navigate into the repository:
+![CareerVamp project preview](public/images/projects/CareerVamp.png)
 
-   ```bash
-   cd Muhammad Bilal
-   ```
+![AI Mock Interview project preview](public/images/projects/AI_Mock.png)
 
-3. Install the dependencies:
+![StyleNest project preview](public/images/projects/StyleNest.png)
 
-   ```bash
-   yarn
-   ```
+## Portfolio Features
 
-4. Run the development server:
-   ```bash
-   yarn dev
-   ```
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Responsive portfolio pages for profile, projects, articles, and contact
+- Interactive AI-engineering hero visualization
+- Selected project summaries and previews
+- Page metadata, canonical and social sharing tags, sitemap, and robots rules
+- Contact form backed by a Next.js API route and Nodemailer
 
-#### 🙏 Thanks
+## Experience
 
-If you like this theme, don't forget to give it a ⭐.
+- **Freelance Full-Stack AI Developer** — December 2022–Present
+- **Frontend Developer, Ads Analytica** — January 2024–November 2025
+- **Frontend Developer Intern, Gamicacloud** — December 2021–February 2022
 
-#### 🤝 Contributing
+## Education
 
-Got enhancements you envision? Contributions are welcome! Fork the repo, push your changes, and submit a pull request. Let's make this theme better, together.
+- **BS Computer Science**, Government College University Faisalabad — 2020–2024
+- **Intermediate in Computer Science**, Government College University Faisalabad — 2018–2020
 
-#### 👾 Issues
+## Run Locally
 
-For any challenges encountered, please feel free to report issues through our issue tracker.
+### Requirements
 
-#### 📝 License
+- Node.js 18.17 or newer
+- npm
 
-This project is open source and available under the MIT License.
+### Install and start
+
+```bash
+git clone https://github.com/bilalchawdhary1/bilal_portfolio.git
+cd bilal_portfolio
+npm ci
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+### Environment variables
+
+Create `.env.local` in the repository root for the contact form:
+
+```dotenv
+MY_EMAIL=your-email@gmail.com
+EMAIL_PASS=your-gmail-app-password
+```
+
+Use a Gmail app password, not your account password. Keep real credentials out of source control. The `NEXT_PUBLIC_SITE_URL` variable can be set to the canonical site origin for metadata and sitemap generation.
+
+## Commands
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run lint` | Run the Next.js ESLint checks |
+| `npm run build` | Create the production build and generate sitemap files |
+| `npm start` | Serve the production build locally |
+
+## Project Structure
+
+```text
+public/                  Static assets, icons, and project previews
+src/components/          Shared layout and interface components
+src/pages/               Next.js pages and API routes
+src/pages/api/sendMail.js Contact form email handler
+src/styles/              Global styles
+```
+
+## Deployment
+
+This is a Next.js application and can be deployed to Vercel or another compatible Node.js host. Configure `NEXT_PUBLIC_SITE_URL` to the canonical HTTPS origin, and set `MY_EMAIL` and `EMAIL_PASS` as server-side environment variables for the contact form. The deployment URL above needs verification before release.

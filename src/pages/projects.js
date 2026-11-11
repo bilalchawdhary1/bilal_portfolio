@@ -1,344 +1,320 @@
-import AnimatedText from "@/components/AnimatedText";
-import {GithubIcon} from "@/components/Icons";
 import Layout from "@/components/Layout";
-import Head from "next/head";
+import SEO from "@/components/SEO";
+import ScrollReveal from "@/components/ScrollReveal";
+import TransitionEffect from "@/components/TransitionEffect";
 import Image from "next/image";
 import Link from "next/link";
-import {useRef} from "react";
-import {HireMe2} from "@/components/HireMe2";
+import aiMockImage from "../../public/images/projects/AI_Mock.png";
+import careerVampImage from "../../public/images/projects/CareerVamp.png";
+import mentraImage from "../../public/images/projects/Mentra.png";
+import styleNestImage from "../../public/images/projects/StyleNest.png";
 
-import stylonext from "../../public/images/projects/stylonext.png";
-import dashbord from "../../public/images/projects/dashbord.png";
-import gymvibe from "../../public/images/projects/gymvibe.png";
-import chiniotfobrics from "../../public/images/projects/chiniotfobrics.png";
-import adsanalytica from "../../public/images/projects/adsanalytica.png";
-import loading from "../../public/images/articles/GTA6-VICE.gif";
+const projectActionClassName =
+  "inline-flex min-h-11 w-fit items-center justify-center rounded-lg border border-dark/20 px-4 py-2 text-sm font-semibold transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light/20 dark:hover:border-primaryDark dark:hover:text-primaryDark dark:focus-visible:ring-primaryDark dark:focus-visible:ring-offset-dark";
 
-import TransitionEffect from "@/components/TransitionEffect";
-import {motion, useMotionValue} from "framer-motion";
+const supportingProjects = [
+  {
+    title: "Mentra",
+    category: "Tutorial-based voice AI learning",
+    summary:
+      "A tutorial-based voice learning platform with AI tutors, bookmarks, and recent sessions.",
+    image: {
+      src: mentraImage,
+      alt: "Mentra AI teaching assistant project preview",
+    },
+    tagsLabel: "Technologies",
+    tags: ["Next.js", "TypeScript", "Vapi", "Clerk", "Supabase"],
+    links: [
+      {
+        href: "https://github.com/bilalchawdhary1/Mentra",
+        label: "View source",
+      },
+    ],
+  },
+  {
+    title: "CareerVamp",
+    category: "AI career platform",
+    summary: "An AI-powered job application and resume platform.",
+    image: {
+      src: careerVampImage,
+      alt: "CareerVamp project preview",
+    },
+    tagsLabel: "Project focus",
+    tags: ["AI", "Job applications", "Resume tools"],
+    links: [
+      {
+        href: "/images/projects/CareerVamp.png",
+        label: "View preview",
+      },
+    ],
+  },
+  {
+    title: "AI Mock Interview Platform",
+    category: "AI interview practice",
+    summary: "An AI-powered interview practice application.",
+    image: {
+      src: aiMockImage,
+      alt: "AI mock interview platform project preview",
+    },
+    tagsLabel: "Project focus",
+    tags: ["AI", "Interview practice"],
+    links: [
+      {
+        href: "/images/projects/AI_Mock.png",
+        label: "View preview",
+      },
+    ],
+  },
+  {
+    title: "StyleNest",
+    category: "E-commerce web application",
+    summary: "An e-commerce web application.",
+    image: {
+      src: styleNestImage,
+      alt: "StyleNest e-commerce web application",
+    },
+    tagsLabel: "Project focus",
+    tags: ["E-commerce", "Web application"],
+    links: [
+      {
+        href: "https://style-nest-com.vercel.app/",
+        label: "View live project",
+      },
+      {
+        href: "https://github.com/bilalchawdhary1/StyleNest.com",
+        label: "View source",
+      },
+    ],
+  },
+];
 
-const FramerImage = motion(Image);
-
-const MovingImg = ({title, img, link}) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const imgRef = useRef(null);
-
-  function handleMouse(event) {
-    imgRef.current.style.display = "inline-block";
-    x.set(event.pageX);
-    y.set(-10);
-  }
-
-  function handleMouseLeave(event) {
-    imgRef.current.style.display = "none";
-    x.set(0);
-    y.set(0);
-  }
-  return (
-    <>
-      <Link
-        href={link}
-        target={"_blank"}
-        className='relative'
-        onMouseMove={handleMouse}
-        onMouseLeave={handleMouseLeave}
-      >
-        <h2 className='capitalize text-xl font-semibold hover:underline dark:text-light md:text-lg xs:text-base sm:self-start'>
-          {title}
-        </h2>
-        <FramerImage
-          src={img}
-          ref={imgRef}
-          alt={title}
-          className='w-96 h-auto z-10 hidden absolute rounded-lg md:!hidden'
-          initial={{opacity: 0}}
-          whileInView={{opacity: 1, transition: {duration: 0.2}}}
-          style={{
-            x: x,
-            y: y,
-          }}
-          sizes='(max-width: 768px) 60vw,
-              (max-width: 1200px) 40vw,
-              33vw'
+const ProjectCard = ({project}) => (
+  <article
+    data-scroll-reveal
+    className='surface-card surface-card-interactive group flex h-full flex-col overflow-hidden rounded-2xl border'
+  >
+    {project.image && (
+      <div className='relative aspect-[16/9] overflow-hidden border-b border-dark/10 bg-[#f3f5f9] dark:border-light/10 dark:bg-[#171c25]'>
+        <Image
+          src={project.image.src}
+          alt={project.image.alt}
+          fill
+          className='object-contain transition-transform duration-300 group-hover:scale-[1.02]'
+          sizes='(max-width: 767px) calc(100vw - 2.5rem), (max-width: 1279px) calc((100vw - 5rem) / 2), 38rem'
         />
-      </Link>
-    </>
-  );
-};
+      </div>
+    )}
 
-const Article = ({img, title, date, link}) => {
-  return (
-    <motion.li
-      initial={{y: 200}}
-      whileInView={{y: 0, transition: {duration: 0.5, ease: "easeInOut"}}}
-      viewport={{once: true}}
-      className='relative w-full p-4 py-6 my-2 rounded-xl flex sm:flex-col justify-between 
-      bg-light text-dark first:mt-0 border border-solid border-dark
-      border-r-4 border-b-4 dark:bg-dark dark:border-light
-      '
-    >
-      <MovingImg img={img} title={title} link={link} />
-      <span
-        className='text-primary font-semibold dark:text-primaryDark min-w-max pl-4 sm:self-start 
-      sm:pl-0 xs:text-sm'
-      >
-        {date}
-      </span>
-    </motion.li>
-  );
-};
-
-const FeaturedProject = ({type, title, summary, img, link, github, tools}) => {
-  return (
-    <article
-      className='relative flex w-full items-center  justify-between rounded-3xl rounded-br-2xl border
-border-solid border-dark bg-light p-12 shadow-2xl  dark:border-light dark:bg-dark  lg:flex-col 
-lg:p-8 xs:rounded-2xl  xs:rounded-br-3xl xs:p-4 
-    '
-    >
-      <div
-        className='absolute  top-0 -right-3 -z-10 h-[103%] w-[101%] rounded-[2.5rem] rounded-br-3xl bg-dark
-         dark:bg-light  xs:-right-2 xs:h-[102%] xs:w-[100%]
-        xs:rounded-[1.5rem] '
-      />
-
-      <Link
-        href={link}
-        className='w-1/2 cursor-pointer overflow-hidden rounded-lg lg:w-full'
-      >
-        <FramerImage
-          src={img}
-          className='h-auto w-full object-cover'
-          alt={title}
-          whileHover={{scale: 1.05}}
-          transition={{duration: 0.2}}
-          sizes='(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw'
-          priority
-        />
-      </Link>
-      <div className='flex w-1/2 flex-col items-start justify-between pl-6 lg:w-full lg:pl-0 lg:pt-6'>
-        <span className='text-xl font-medium text-primary dark:text-light xs:text-base'>
-          {type}
-        </span>
-        <span className='text-xl font-medium text-primaryDark dark:text-primaryDark xs:text-base'>
-          {tools}
-        </span>
-        <Link href={link} className='underline-offset-2 hover:underline'>
-          <h2 className='my-2 w-full text-left text-4xl font-bold lg:text-3xl xs:text-2xl'>
-            {title}
-          </h2>
-        </Link>
-        <p className=' my-2 rounded-md font-medium text-dark dark:text-light sm:text-sm'>
-          {summary}
+    <div className='flex flex-1 flex-col p-6 sm:p-5'>
+      <div>
+        <p className='mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary dark:text-primaryDark'>
+          {project.category}
         </p>
-        <div className='mt-2 flex items-center'>
+        <h3 className='text-xl font-bold leading-snug'>{project.title}</h3>
+        <p className='mt-3 text-sm leading-6 text-dark/70 dark:text-light/70'>
+          {project.summary}
+        </p>
+      </div>
+
+      {project.tags?.length > 0 && (
+        <ul
+          aria-label={`${project.title} ${project.tagsLabel}`}
+          className='mt-4 flex flex-wrap gap-2'
+        >
+          {project.tags.map(tag => (
+            <li
+              key={tag}
+              className='rounded-full border border-dark/10 px-2.5 py-1 text-xs text-dark/70 dark:border-light/15 dark:text-light/75'
+            >
+              {tag}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <div className='mt-auto flex flex-wrap gap-x-5 gap-y-1 pt-4'>
+        {project.links.map(link => (
           <Link
-            href={github}
-            target={"_blank"}
-            className='w-10'
-            aria-label='github link'
+            key={link.href}
+            href={link.href}
+            target='_blank'
+            rel='noopener noreferrer'
+            aria-label={`${link.label} for ${project.title}`}
+            className={projectActionClassName}
           >
-            <GithubIcon />
+            {link.label}
           </Link>
-          <Link
-            href={link}
-            className='ml-4 rounded-lg
-             bg-dark p-2 px-6 text-lg font-semibold
-             sm:px-4 sm:text-base rounded-lg border-2 border-solid bg-dark
-            capitalize text-light hover:border-dark hover:bg-transparent hover:text-dark 
-            dark:bg-light dark:text-dark dark:hover:border-light dark:hover:bg-dark dark:hover:text-light
-            md:p-2 md:px-4 md:text-base'
-            aria-label='Project link'
-          >
-            View Project
-          </Link>
+        ))}
+      </div>
+    </div>
+  </article>
+);
+
+const SharpBuildProject = () => (
+  <article
+    data-scroll-reveal
+    className='surface-card overflow-hidden rounded-[1.75rem] border'
+  >
+    <div className='grid grid-cols-[minmax(0,1.3fr)_minmax(250px,0.7fr)] gap-8 p-8 lg:grid-cols-1 sm:p-5'>
+      <div>
+        <p className='mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary dark:text-primaryDark'>
+          Featured · Retrieval-backed AI
+        </p>
+        <h2 className='text-3xl font-bold tracking-tight sm:text-2xl'>
+          SharpBuild AI Website Assistant
+        </h2>
+        <p className='mt-4 max-w-3xl text-sm leading-7 text-dark/70 dark:text-light/70'>
+          A website knowledge assistant that answers from published content,
+          links answers to their sources, streams responses, and offers a human
+          contact path when the available information is not enough.
+        </p>
+        <div
+          className='mt-6 flex flex-wrap gap-2'
+          aria-label='Technology stack'
+        >
+          {["FastAPI", "Gemini", "PostgreSQL", "pgvector", "Next.js"].map(
+            technology => (
+              <span
+                key={technology}
+                className='rounded-full border border-dark/10 px-3 py-1.5 text-xs font-medium text-dark/75 dark:border-light/15 dark:text-light/75'
+              >
+                {technology}
+              </span>
+            ),
+          )}
         </div>
       </div>
-    </article>
-  );
-};
 
-const Project = ({title, type, img, link, tools}) => {
-  return (
-    <article
-      className='relative flex w-full flex-col items-center justify-center rounded-2xl  rounded-br-2xl 
-      border  border-solid  border-dark bg-light p-6  shadow-2xl dark:border-light dark:bg-dark 
-      xs:p-4
-      '
-    >
-      <div
-        className='absolute  top-0 -right-3 -z-10 h-[103%] w-[102%] rounded-[2rem] rounded-br-3xl bg-dark
-         dark:bg-light  md:-right-2 md:w-[101%] xs:h-[102%]
-        xs:rounded-[1.5rem]'
-      />
-
-      <Link
-        href={link}
-        className='w-full cursor-pointer overflow-hidden rounded-lg'
-      >
-        <FramerImage
-          src={img}
-          alt={title}
-          className='h-auto w-full'
-          whileHover={{scale: 1.05}}
-          transition={{duration: 0.2}}
-          sizes='(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw'
-        />
-      </Link>
-      <div className='mt-4 flex w-full flex-col items-start justify-between'>
-        <span className='text-xl font-medium text-primary dark:text-light lg:text-lg md:text-base'>
-          {type}
-        </span>
-        <span className='text-xl font-medium text-primaryDark dark:text-primaryDark xs:text-base'>
-          {tools}
-        </span>
-
-        <Link href={link} className='underline-offset-2 hover:underline'>
-          <h2 className='my-2 w-full text-left text-3xl font-bold lg:text-2xl '>
-            {title}
-          </h2>
+      <div className='flex flex-col justify-center rounded-2xl border border-dark/5 bg-light/75 p-6 dark:border-light/5 dark:bg-[#151a23]/75 sm:p-5'>
+        <p className='text-xs font-bold uppercase tracking-[0.16em] text-dark/55 dark:text-light/55'>
+          System at a glance
+        </p>
+        <p className='mt-3 text-sm leading-6 text-dark/75 dark:text-light/75'>
+          A focused retrieval pipeline keeps answers tied to the website’s
+          indexed material.
+        </p>
+        <Link
+          href='https://github.com/bilalchawdhary1/SharpBuild-AI-Website-Assistant'
+          target='_blank'
+          rel='noopener noreferrer'
+          className={`${projectActionClassName} mt-5`}
+        >
+          Explore the public repository
         </Link>
-        <div className='flex w-full items-center  justify-between'>
-          <Link
-            href={link}
-            className='rounded-lg
-             bg-dark mt-2 px-6 py-2 text-lg font-semibold
-             sm:px-4 sm:text-base rounded-lg border-2 border-solid bg-dark
-            capitalize text-light hover:border-dark hover:bg-transparent hover:text-dark 
-            dark:bg-light dark:text-dark dark:hover:border-light dark:hover:bg-dark dark:hover:text-light
-            md:p-2 md:px-4 md:text-base
-            '
-            aria-label={title}
-          >
-            View Project
-          </Link>
-        </div>
       </div>
-    </article>
-  );
-};
+    </div>
+
+    <div className='border-t border-dark/10 px-8 py-7 dark:border-light/10 sm:px-5'>
+      <h3 className='mb-5 text-lg font-semibold'>How the answer is grounded</h3>
+      <ol className='grid grid-cols-4 gap-3 xl:grid-cols-2 md:grid-cols-1'>
+        {[
+          {
+            step: "01",
+            title: "Prepare content",
+            detail:
+              "Crawl, clean, and split site pages into section-aware chunks.",
+          },
+          {
+            step: "02",
+            title: "Index knowledge",
+            detail:
+              "Create Gemini embeddings and store them with page metadata.",
+          },
+          {
+            step: "03",
+            title: "Retrieve context",
+            detail: "Search PostgreSQL with pgvector and filter weak matches.",
+          },
+          {
+            step: "04",
+            title: "Answer with sources",
+            detail:
+              "Generate a grounded reply with citations and optional SSE streaming.",
+          },
+        ].map(item => (
+          <li
+            key={item.step}
+            className='rounded-xl border border-dark/10 p-4 dark:border-light/10'
+          >
+            <p className='font-mono text-xs font-semibold tracking-widest text-primary dark:text-primaryDark'>
+              {item.step}
+            </p>
+            <h4 className='mt-3 text-sm font-semibold'>{item.title}</h4>
+            <p className='mt-2 text-sm leading-6 text-dark/65 dark:text-light/65'>
+              {item.detail}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </article>
+);
 
 export default function Projects() {
   return (
     <>
-      <Head>
-        <title>Projects | By Muhammad Bilal</title>
-        <meta
-          name='description'
-          content='Muhammad Bilal, A open-source portfolio theme built with Nextjs'
-        />
-      </Head>
+      <SEO
+        title='Selected Projects | Muhammad Bilal'
+        description='Explore Muhammad Bilal’s AI application, retrieval assistant, voice learning, and full-stack software projects.'
+        path='/projects'
+      />
 
       <TransitionEffect />
-      <main
-        className={`mb-16  flex w-full flex-col items-center justify-center dark:text-light`}
-      >
-        <Layout className='pt-16'>
-          <AnimatedText
-            text='Imagination Transforms the World ✨'
-            className='mb-16 !text-8xl !leading-tight lg:!text-7xl sm:mb-8 sm:!text-6xl xs:!text-4xl'
-          />
-          <div className='grid grid-cols-12 gap-24 gap-y-32 xl:gap-x-16 lg:gap-x-8 md:gap-y-24 sm:gap-x-0'>
-            <div className='col-span-12'>
-              <FeaturedProject
-                type='Full Stack Development'
-                tools='Next.js | Node.js | Express.js | MongoDB | Tailwind CSS'
-                title='Oman Client Company Dashboard'
-                summary='A full-stack business management dashboard for an Oman-based client. It includes modules for customers, sales, inventory, attendance, and more — all in one responsive admin panel.'
-                img={dashbord} // replace with your image import
-                date='2025'
-                link='https://samad2-roan.vercel.app/'
-                github='https://github.com/bilalchawdhary1'
-              />
-            </div>
+      <main className='text-dark dark:text-light'>
+        <Layout className='!pb-20'>
+          <header className='mb-10 max-w-3xl'>
+            <p className='mb-3 text-xs font-bold uppercase tracking-[0.18em] text-primary dark:text-primaryDark'>
+              Selected work
+            </p>
+            <h1 className='text-5xl font-bold tracking-tight sm:text-4xl'>
+              Software built around real product needs
+            </h1>
+            <p className='mt-4 text-base leading-7 text-dark/70 dark:text-light/70'>
+              Practical AI applications, thoughtful integrations, and full-stack
+              product work. Technical details are included where they can be
+              verified in the public source.
+            </p>
+          </header>
 
-            <div className='col-span-6 sm:col-span-12'>
-              <Project
-                type='Full Stack Development'
-                tools='MERN Stack | Tailwind CSS'
-                title='StyleNest – E-Commerce Platform'
-                img={stylonext} // replace with your image import
-                date='2025'
-                link='https://style-nest-com.vercel.app/'
-                github='https://github.com/bilalchawdhary1'
-              />
-            </div>
+          <ScrollReveal>
+            <div className='space-y-6'>
+              <SharpBuildProject />
 
-            <div className='col-span-6 sm:col-span-12'>
-              <Project
-                type='Frontend Development'
-                tools='Next.js | React | Tailwind CSS'
-                title='Ads Analytica – Digital Agency Website'
-                img={adsanalytica} // replace with your image import
-                date='2024'
-                link='https://adsanalytica.com/'
-                github='https://github.com/bilalchawdhary1'
-              />
-            </div>
-            <div className='col-span-6 sm:col-span-12'>
-              <Project
-                type='Frontend Development'
-                tools='HTML | CSS | JavaScript | Bootstrap'
-                title='Chiniot Fabrics – Corporate Website'
-                img={chiniotfobrics} // replace with your image import
-                date='2023'
-                link='https://chiniotfabrics.com/'
-                github='https://github.com/bilalchawdhary1'
-              />
-            </div>
-            <div className='col-span-6 sm:col-span-12'>
-              <Project
-                type='Full Stack Development'
-                tools='MERN Stack | Tailwind CSS'
-                title='GymVibe – Fitness Web App'
-                img={gymvibe} // replace with your image import
-                date='2024'
-                link='https://gymvibe-six.vercel.app/'
-                github='https://github.com/bilalchawdhary1'
-              />
-            </div>
-          </div>
-          <div>
-            <ul className='flex flex-col items-center relative pt-16'>
-              <Article
-                title='Adding more soon, thanks for the interest!'
-                img={loading}
-                time='1 min read'
-                date=''
-                link='https://github.com/bilalchawdhary1/'
-              />
-            </ul>
+              <section aria-labelledby='other-projects-heading'>
+                <div className='mb-5 pt-7' data-scroll-reveal>
+                  <p className='mb-2 text-xs font-bold uppercase tracking-[0.16em] text-primary dark:text-primaryDark'>
+                    More selected work
+                  </p>
+                  <h2
+                    id='other-projects-heading'
+                    className='text-2xl font-bold tracking-tight'
+                  >
+                    Learning, career, and commerce products
+                  </h2>
+                </div>
 
-            <div className='mt-2 flex items-center justify-between gap-3 grid-cols-2'>
-              <Link
-                href='/contact/'
-                target={"_self"}
-                className={`flex items-center rounded-lg border-2 border-solid bg-light p-2.5 px-6 text-lg font-semibold
-            capitalize text-dark hover:border-light hover:bg-dark hover:text-light 
-            dark:bg-dark dark:text-light dark:hover:bg-light dark:hover:text-dark
-            md:p-2 md:px-4 md:text-base
-             `}
-              >
-                Hire Me
-              </Link>
-              <Link
-                href='/about/'
-                target={"_self"}
-                className={`flex items-center rounded-lg border-2 border-solid bg-dark p-2.5 px-6 text-lg font-semibold
-            capitalize text-light hover:border-dark hover:bg-transparent hover:text-dark 
-            dark:bg-light dark:text-dark dark:hover:border-light dark:hover:bg-dark dark:hover:text-light
-            md:p-2 md:px-4 md:text-base
-             `}
-              >
-                Get To Know Me
-              </Link>
+                <div className='grid grid-cols-2 gap-4 md:grid-cols-1'>
+                  {supportingProjects.map(project => (
+                    <ProjectCard key={project.title} project={project} />
+                  ))}
+                </div>
+              </section>
             </div>
-            <HireMe2 />
+          </ScrollReveal>
+
+          <div className='mt-12 flex flex-wrap gap-3'>
+            <Link
+              href='/contact/'
+              className='inline-flex min-h-11 items-center justify-center rounded-lg border border-dark bg-dark px-5 py-3 text-sm font-semibold text-light transition-colors hover:bg-transparent hover:text-dark dark:border-light dark:bg-light dark:text-dark dark:hover:bg-dark dark:hover:text-light'
+            >
+              Discuss a project
+            </Link>
+            <Link
+              href='/about/'
+              className='inline-flex min-h-11 items-center justify-center rounded-lg border border-dark/20 px-5 py-3 text-sm font-semibold transition-colors hover:border-dark dark:border-light/20 dark:hover:border-light'
+            >
+              About me
+            </Link>
           </div>
         </Layout>
       </main>

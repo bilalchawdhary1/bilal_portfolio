@@ -1,104 +1,94 @@
-import AnimatedText from "@/components/AnimatedText";
-import {HireMe} from "@/components/HireMe";
-import Layout from "@/components/Layout";
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import TransitionEffect from "@/components/TransitionEffect";
-// import profilePic from "../../public/images/profile/Riley.png";
-import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
+import HeroVisual from "@/components/HeroVisual";
+import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
+import ScrollReveal from "@/components/ScrollReveal";
+import Skills from "@/components/Skills";
+import Services from "@/components/Services";
+import TransitionEffect from "@/components/TransitionEffect";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Muhammad Bilal</title>
-        <meta
-          name='description'
-          content='Next Portfolio, A open-source portfolio theme built with Nextjs'
-        />
-      </Head>
+      <SEO
+        title='AI Application Developer &amp; Python Backend Engineer | Muhammad Bilal'
+        description='Muhammad Bilal builds practical AI applications, integrates LLMs, and develops reliable Python backend systems for businesses and startups.'
+        path='/'
+        person
+      />
 
       <TransitionEffect />
-      <article
-        className={`flex min-h-screen items-center text-dark dark:text-light sm:items-start`}
-      >
-        <Layout className='!pt-24 md:!pt-16 sm:!pt-28'>
-          <div className='flex w-full items-start justify-between md:flex-col pt-10 pb-24'>
-            <div className='w-1/2 lg:hidden md:flex flex self-center max-h-fit'>
-              {
-                <Image
-                  priority={true}
-                  src='/images/profile/Riley.png'
-                  alt='image'
-                  className='h-auto w-100'
-                  height={340}
-                  width={340}
-                  sizes='33vw'
-                />
-              }
-            </div>
-            <div className='flex w-1/2 flex-col items-center self-center lg:w-full lg:text-center'>
-              <AnimatedText
-                text='Hey, I’m Bilal'
-                className='!text-left !text-6xl xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl'
-              />
-              <div className='flex w-1/2 w-full items-center items-start lg:w-full  lg:!justify-center  sm:!justify-center  md:!text-center md:inline-block md:w-full'>
-                <h2 className='animate-text bg-gradient-to-r from-lightGreen via-lightGreen to-slideGreen bg-clip-text text-transparent font-semibold capitalize !text-5xl xl:!text-4xl lg:!text-4xl md:!text-5xl sm:!text-3xl'>
-                  I create engaging web experiences.
-                </h2>
-              </div>
-
-              <p className='my-4 text-base font-medium md:text-sm sm:!text-sm'>
-                I'm a Freelance Full Stack Developer passionate about crafting
-                responsive, high-performance digital experiences. With strong
-                expertise in React, Next.js, Node.js, and MongoDB, I focus on
-                clean design, seamless functionality, and impactful user
-                interfaces.
-              </p>
-              <div className='mt-2 flex items-center self-start gap-3 grid-cols-2 lg:self-center'>
-                <Link
-                  href='/about/'
-                  target={"_self"}
-                  className={`flex items-center rounded-lg border-2 border-solid bg-dark p-2.5 px-6 text-lg font-semibold
-            capitalize text-light hover:border-dark hover:bg-transparent hover:text-dark 
-            dark:bg-light dark:text-dark dark:hover:border-light dark:hover:bg-dark dark:hover:text-light
-            md:p-2 md:px-4 md:text-base
-             `}
+      <main className='text-dark dark:text-light'>
+        <Layout className='!py-8 sm:!py-6'>
+          <section className='grid min-h-[calc(100svh-10rem)] grid-cols-[minmax(0,1.1fr)_minmax(260px,0.9fr)] items-center gap-12 py-8 lg:min-h-0 lg:grid-cols-1 lg:gap-8 md:grid-cols-1 md:gap-10 md:py-10'>
+            <div className='max-w-3xl'>
+              <h1 className='hero-enter hero-enter-1 text-6xl font-bold leading-[1.05] tracking-[-0.045em] lg:text-5xl sm:text-4xl'>
+                Muhammad Bilal
+              </h1>
+              <p className='hero-enter hero-enter-2 mt-4 text-xl font-medium leading-snug text-dark/75 dark:text-light/75 sm:text-lg'>
+                <span>AI Application Developer</span>{" "}
+                <span
+                  aria-hidden='true'
+                  className='px-2 text-primary/50 dark:text-primaryDark/60'
                 >
-                  Get To Know Me
-                </Link>
+                  |
+                </span>{" "}
+                <span>Python Backend Engineer</span>
+              </p>
+              <p className='hero-enter hero-enter-3 mt-6 max-w-xl text-lg leading-8 text-dark/70 dark:text-light/70 md:text-base md:leading-7'>
+                I build AI-powered applications, intelligent chatbots, and
+                scalable backend systems that solve real business problems.
+              </p>
+              <div className='hero-enter hero-enter-4 mt-8 flex flex-wrap items-center gap-3'>
                 <Link
                   href='/projects/'
-                  target={"_self"}
-                  className={`flex items-center rounded-lg border-2 border-solid bg-light p-2.5 px-6 text-lg font-semibold
-            capitalize text-dark hover:border-light hover:bg-dark hover:text-light 
-            dark:bg-dark dark:text-light dark:hover:bg-light dark:hover:text-dark
-            md:p-2 md:px-4 md:text-base
-             `}
+                  className='inline-flex min-h-12 items-center justify-center rounded-lg border border-dark bg-dark px-5 py-3 text-sm font-semibold text-light transition-[transform,background-color,color,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-transparent hover:text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light dark:bg-light dark:text-dark dark:hover:bg-dark dark:hover:text-light dark:focus-visible:ring-primaryDark dark:focus-visible:ring-offset-dark'
                 >
-                  projects
+                  View My Work
+                </Link>
+                <Link
+                  href='/contact/'
+                  className='inline-flex min-h-12 items-center justify-center rounded-lg border border-dark/20 px-5 py-3 text-sm font-semibold text-dark transition-[transform,background-color,color,border-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-dark hover:bg-dark hover:text-light hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light/20 dark:text-light dark:hover:border-light dark:hover:bg-light dark:hover:text-dark dark:focus-visible:ring-primaryDark dark:focus-visible:ring-offset-dark'
+                >
+                  Let&apos;s Discuss Your Project
                 </Link>
               </div>
+              <div
+                role='group'
+                aria-label='Professional profiles'
+                className='hero-enter hero-enter-5 mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium'
+              >
+                <a
+                  href='https://www.linkedin.com/in/bilal-fullstack'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='inline-flex min-h-11 items-center rounded-md text-dark/65 underline decoration-dark/25 underline-offset-4 transition-[transform,color] duration-200 hover:-translate-y-0.5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-light/65 dark:decoration-light/25 dark:hover:text-primaryDark dark:focus-visible:ring-primaryDark dark:focus-visible:ring-offset-dark'
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href='https://github.com/bilalchawdhary1'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='inline-flex min-h-11 items-center rounded-md text-dark/65 underline decoration-dark/25 underline-offset-4 transition-[transform,color] duration-200 hover:-translate-y-0.5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-light/65 dark:decoration-light/25 dark:hover:text-primaryDark dark:focus-visible:ring-primaryDark dark:focus-visible:ring-offset-dark'
+                >
+                  GitHub
+                </a>
+              </div>
             </div>
-          </div>
+
+            <div className='flex justify-center md:order-last'>
+              <HeroVisual />
+            </div>
+          </section>
         </Layout>
-        {/* <div className='fixed right-8 bottom-3 inline-block md:hidden'>
-          <iframe
-            className='iframe'
-            title='Weather Widget'
-            width='280'
-            height='120'
-            src='https://wathar.netlify.app/'
-            frameborder='0'
-            allowfullscreen
-          ></iframe>
-        </div> */}
-        <HireMe />
-      </article>
-      <Skills />
-      <Experience />
+        <ScrollReveal>
+          <Services />
+          <Skills />
+          <Experience />
+        </ScrollReveal>
+      </main>
     </>
   );
 }

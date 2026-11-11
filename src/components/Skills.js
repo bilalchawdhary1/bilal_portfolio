@@ -1,63 +1,69 @@
-import { motion } from "framer-motion";
-import React, { useRef } from "react";
+import React from "react";
 
-const Skill = ({ name, x, y }) => {
-  const ref = useRef(null);
-  return (
-    <motion.div
-      ref={ref}
-      whileHover={{ scale: 1.05 }}
-      initial={{ x: 0, y: 0 }}
-      whileInView={{ x: x, y: y, transition: { duration: 1.5 } }}
-      viewport={{ once: true }}
-      className="cursor-default w-max origin-center absolute 
-       font-semibold bg-dark text-light py-3 px-6 rounded-full dark:bg-light dark:text-dark
-       lg:py-2 lg:px-4 md:text-sm md:py-1.5 md:px-3  xs:bg-transparent xs:dark:bg-transparent xs:text-dark xs:dark:text-light xs:font-bold
-       "
-    >
-      {name}
-    </motion.div>
-  );
-};
+const skillGroups = [
+  {
+    title: "Backend",
+    skills: ["Python", "FastAPI", "REST APIs", "SQL"],
+  },
+  {
+    title: "AI & LLMs",
+    skills: ["OpenAI", "Google Gemini", "LLM integration", "Prompt engineering"],
+  },
+  {
+    title: "Databases",
+    skills: ["PostgreSQL", "MongoDB"],
+  },
+  {
+    title: "Frontend & tools",
+    skills: ["React.js", "Next.js", "TypeScript", "JavaScript", "Git", "GitHub", "Tailwind CSS"],
+  },
+];
 
-const Skills = () => {
-  const ref = useRef(null);
-  return (
-    <>
-      <h2 className="font-bold text-8xl mt-64 w-full text-center md:text-6xl md:mt-32">
-        Skills
-      </h2>
-      <div
-        ref={ref}
-        className="w-full h-[100vh] relative bg-circularLight dark:bg-circularDark  flex items-center justify-center 
-      mb-64 md:mb-32 rounded-full
-      lg:bg-circularLightLg lg:dark:bg-circularDarkLg md:bg-circularLightMd md:dark:bg-circularDarkMd 
-      sm:bg-circularLightSm sm:dark:bg-circularDarkSm lg:h-[80vh] sm:h-[60vh] xs:h-[50vh] 
-      "
+const Skills = () => (
+  <section
+    aria-labelledby='skills-heading'
+    className='mx-auto w-full max-w-7xl px-8 py-14 sm:px-5 sm:py-10'
+  >
+    <div className='mb-8 max-w-2xl' data-scroll-reveal>
+      <p className='mb-2 text-xs font-bold uppercase tracking-[0.18em] text-primary dark:text-primaryDark'>
+        Technical expertise
+      </p>
+      <h2
+        id='skills-heading'
+        className='text-3xl font-bold tracking-tight sm:text-2xl'
       >
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="cursor-default flex rounded-full font-semibold bg-dark text-light px-6 py-7 shadow-dark
-        dark:bg-light dark:text-dark lg:p-6 md:p-4 xs:text-xs xs:p-2
-        "
-        >
-          Web
-        </motion.div>
+        Skills &amp; toolkit
+      </h2>
+    </div>
 
-        <Skill name="HTML" x="-20vw" y="2vw" />
-        <Skill name="Tailwind" x="-5vw" y="-10vw" />
-        <Skill name="JavaScript" x="20vw" y="6vw" />
-        <Skill name="TypeScript" x="0vw" y="12vw" />
-        <Skill name="Next.js" x="-20vw" y="-15vw" />
-        <Skill name="Gatsby" x="15vw" y="-12vw" />
-        <Skill name="Git" x="-35vw" y="-5vw" />
-        <Skill name="UI / UX" x="32vw" y="-5vw" />
-        <Skill name="Node.js" x="0vw" y="-20vw" />
-        <Skill name="React" x="-25vw" y="18vw" />
-        <Skill name="Framer Motion" x="28vw" y="18vw" />
-      </div>
-    </>
-  );
-};
+    <div className='grid grid-cols-4 gap-4 lg:grid-cols-2 sm:grid-cols-1'>
+      {skillGroups.map(group => (
+        <article
+          key={group.title}
+          data-scroll-reveal
+          className='surface-card surface-card-interactive rounded-2xl border p-5'
+        >
+          <h3 className='mb-4 flex items-center gap-2 text-base font-semibold'>
+            <span
+              aria-hidden='true'
+              className='h-1.5 w-1.5 rounded-full bg-primary dark:bg-primaryDark'
+            />
+            {group.title}
+          </h3>
+          <ul className='flex flex-wrap gap-2'>
+            {group.skills.map(skill => (
+              <li
+                key={skill}
+                className='rounded-full border border-dark/10 px-3 py-1.5 text-sm text-dark/70 dark:border-light/15 dark:text-light/75'
+              >
+                {skill}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+);
 
 export default Skills;

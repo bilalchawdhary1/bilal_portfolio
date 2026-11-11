@@ -1,60 +1,42 @@
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 import React from "react";
 
-const quote = {
-  hidden: {
-    opacity: 1,
-  },
+const heading = {
+  hidden: {opacity: 0},
   visible: {
     opacity: 1,
-    transition: {
-      delay: 0.5,
-      staggerChildren: 0.08,
-    },
+    transition: {staggerChildren: 0.04},
   },
 };
 
-const singleWord = {
-  hidden: {
-    opacity: 0,
-    y: 50,
-  },
+const word = {
+  hidden: {opacity: 0, y: 12},
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 1,
-    },
+    transition: {duration: 0.35},
   },
 };
 
-const AnimatedText = ({ text, className = "" }) => {
-  return (
-    <div
-      className="py-2 w-full mx-auto flex flex-col items-center justify-center  text-center  
-    overflow-hidden sm:py-0"
+const AnimatedText = ({text, className = ""}) => (
+  <div className='w-full overflow-hidden'>
+    <motion.h1
+      className={`w-full text-center text-5xl font-bold leading-tight tracking-tight text-dark dark:text-light ${className}`}
+      variants={heading}
+      initial='hidden'
+      animate='visible'
     >
-      <motion.h1
-        className={`inline-block text-dark dark:text-light
-      text-8xl font-bold w-full capitalize  ${className} xl:text-6xl`}
-        variants={quote}
-        initial="hidden"
-        animate="visible"
-      >
-        {text.split(" ").map((char, index) => {
-          return (
-            <motion.span
-              className="inline-block"
-              key={char + "-" + index}
-              variants={singleWord}
-            >
-              {char}&nbsp;
-            </motion.span>
-          );
-        })}
-      </motion.h1>
-    </div>
-  );
-};
+      {text.split(/\s+/).map((part, index) => (
+        <motion.span
+          className='inline-block'
+          key={`${part}-${index}`}
+          variants={word}
+        >
+          {part}&nbsp;
+        </motion.span>
+      ))}
+    </motion.h1>
+  </div>
+);
 
 export default AnimatedText;
