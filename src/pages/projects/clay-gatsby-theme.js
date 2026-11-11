@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import Head from "next/head";
+import SEO from "@/components/SEO";
 import Image from "next/image";
 import Link from "next/link";
 import {useInView, useMotionValue, useSpring} from "framer-motion";
@@ -9,7 +9,7 @@ import TransitionEffect from "@/components/TransitionEffect";
 import {GithubIcon} from "@/components/Icons";
 import {DevIcon} from "@/components/Icons";
 
-import proj1 from "/public/images/projects/clay-theme.png";
+import proj1 from "/public/images/projects/clay-theme.jpg";
 
 function AnimatedNumberFramerMotion({value}) {
   const ref = useRef(null);
@@ -38,19 +38,12 @@ function AnimatedNumberFramerMotion({value}) {
 export default function About() {
   return (
     <>
-      <Head>
-        <link
-          rel='canonical'
-          href='https://travislord.xyz/projects/clay-gatsby-theme'
-        ></link>
-        <title>
-          Clay Theme | Unlocking The Power Of Gatsby V5+ | By Bilal Chawdhary
-        </title>
-        <meta
-          name='description'
-          content='I am thrilled to share Clay Theme with the web development community! I have recently launched Clay Theme, a cutting-edge Gatsby Framework Template.'
-        />
-      </Head>
+      <SEO
+        title='Clay Gatsby Theme | Muhammad Bilal'
+        description='An overview of the Clay Gatsby theme and its original project resources.'
+        canonicalUrl='https://travislord.xyz/projects/clay-gatsby-theme'
+        noIndex
+      />
 
       <TransitionEffect />
       <main
@@ -106,14 +99,16 @@ export default function About() {
                   aria-label='Visit Theme Demo'
                   href='https://clay-theme.netlify.app'
                   target={"_blank"}
+                  rel='noopener noreferrer'
                 >
                   Visit Demo
                 </Link>
                 <Link
-                  href='https://github.com/bilalchawdhary1/clay-theme'
+                  href='https://github.com/lilxyzz/clay-theme'
                   target={"_blank"}
                   className='w-10'
-                  aria-label='github link'
+                  rel='noopener noreferrer'
+                  aria-label='View the original Clay Theme repository'
                 >
                   <GithubIcon />
                 </Link>
@@ -121,7 +116,8 @@ export default function About() {
                   href='https://dev.to/lilxyzz/clay-theme-unlocking-the-power-of-gatsby-v5-and-netlifycms-with-clay-theme-njn'
                   target={"_blank"}
                   className='w-10'
-                  aria-label='github link'
+                  rel='noopener noreferrer'
+                  aria-label='Read the Clay Theme article on DEV'
                 >
                   <DevIcon />
                 </Link>
@@ -142,9 +138,10 @@ export default function About() {
                 className='h-auto w-full rounded-2xl'
                 src={proj1}
                 alt='Clay Gatsby Theme'
-                sizes='(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw'
+                sizes='(max-width: 639px) calc(100vw - 6.75rem),
+              (max-width: 767px) calc(100vw - 8.25rem),
+              (max-width: 1279px) calc((100vw - 16.5rem) / 2),
+              31.75rem'
                 priority
               />
             </div>

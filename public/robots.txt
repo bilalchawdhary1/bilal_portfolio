@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Host
+Host: https://muhammadbilal-lime.vercel.app
+
+# Sitemaps
+Sitemap: https://muhammadbilal-lime.vercel.app/sitemap.xml

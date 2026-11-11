@@ -1,157 +1,105 @@
 import Layout from "@/components/Layout";
-import Head from "next/head";
+import SEO from "@/components/SEO";
+import ScrollReveal from "@/components/ScrollReveal";
+import Skills from "@/components/Skills";
+import TransitionEffect from "@/components/TransitionEffect";
 import Image from "next/image";
 import profile from "../../public/images/profile/Riley.png";
-import {useInView, useMotionValue, useSpring} from "framer-motion";
-import {useEffect, useRef} from "react";
-import Skills from "@/components/Skills";
-import Experience from "@/components/Experience";
-import AnimatedText from "@/components/AnimatedText";
-import TransitionEffect from "@/components/TransitionEffect";
-import {HireMe2} from "@/components/HireMe2";
 
-function AnimatedNumberFramerMotion({value}) {
-  const ref = useRef(null);
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, {duration: 3000});
-  const isInView = useInView(ref, {once: true});
-  useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
-  }, [motionValue, value, isInView]);
-
-  useEffect(
-    () =>
-      springValue.on("change", latest => {
-        if (ref.current && latest.toFixed(0) <= value) {
-          ref.current.textContent = latest.toFixed(0);
-        }
-      }),
-    [springValue, value]
-  );
-
-  return <span ref={ref} />;
-}
+const services = [
+  "AI application development",
+  "AI agent development",
+  "AI chatbot development",
+  "OpenAI API integration",
+  "Google Gemini integration",
+  "LLM integration and prompt engineering",
+  "Python and FastAPI backend development",
+  "REST API development",
+  "PostgreSQL database integration",
+  "Full-stack SaaS development",
+  "AI workflow automation",
+];
 
 export default function About() {
   return (
     <>
-      <Head>
-        <title>About Muhammad Bilal</title>
-        <meta
-          name='description'
-          content='Muhammad Bilal, A open-source portfolio theme built with Nextjs'
-        />
-      </Head>
+      <SEO
+        title='About Muhammad Bilal'
+        description='Learn about Muhammad Bilal, an AI Application Developer and Python Backend Engineer building AI-powered products and reliable backend systems.'
+        path='/about'
+      />
 
       <TransitionEffect />
-      <main
-        className={`flex  w-full flex-col items-center justify-center dark:text-light`}
-      >
-        <Layout className='pt-16'>
-          <AnimatedText
-            text='Code with Passion. Create with Purpose 🔥'
-            className='mb-16 !text-8xl !leading-tight lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8'
-          />
-
-          <div className='grid w-full grid-cols-8 gap-16 sm:gap-8'>
-            <div className='col-span-3 flex flex-col items-start justify-start xl:col-span-4 md:order-2 md:col-span-8'>
-              <h2 className='mb-4 text-lg font-bold uppercase text-dark/75 dark:text-light/75'>
-                BIOGRAPHY
-              </h2>
-              <p className='font-medium'>
-                I'm Bilal, a passionate Full Stack Developer dedicated to
-                building modern, responsive, and high-performance web
-                applications. As a freelancer, I specialize in crafting clean,
-                scalable, and user-friendly digital experiences using React.js,
-                Next.js, Node.js, Express.js, and MongoDB.
+      <main className='text-dark dark:text-light'>
+        <ScrollReveal>
+          <Layout>
+          <section className='grid grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] items-center gap-12 md:grid-cols-1 md:gap-8'>
+            <div data-scroll-reveal>
+              <p className='mb-3 text-xs font-bold uppercase tracking-[0.18em] text-primary dark:text-primaryDark'>
+                About me
               </p>
-              <p className='my-4 font-medium'>
-                Over the past few years, I've had the opportunity to collaborate
-                with clients worldwide on a variety of projects — including
-                eCommerce stores, business dashboards, and portfolio websites.
-                Some of my notable works include StyleNest (E-Commerce
-                Platform), Ads Analytica (Agency Website), and the Oman Client
-                Dashboard built with the MERN stack.
-              </p>
-              <p className='my-4 font-medium'>
-                I’m always excited to explore new technologies, refine my
-                skills, and turn ideas into real-world solutions that make an
-                impact.
-              </p>
-              <p className='my-4 font-medium'>
-                P.S. I’m a huge tech enthusiast — and sometimes, a little
-                obsessed with clean UI ✌️.
-              </p>
+              <h1 className='max-w-2xl text-5xl font-bold leading-tight tracking-tight sm:text-4xl'>
+                Practical AI. Reliable Python.
+              </h1>
+              <div className='mt-6 max-w-2xl space-y-4 text-base leading-7 text-dark/75 dark:text-light/75'>
+                <p>
+                  I’m Muhammad Bilal, an AI Application Developer and Python
+                  Backend Engineer. Since December 2022, I’ve worked as a
+                  Freelance Full-Stack AI Developer.
+                </p>
+                <p>
+                  I build practical AI-powered applications, integrate LLMs
+                  into existing products, develop AI chatbots and intelligent
+                  workflows, and build reliable Python backend systems.
+                </p>
+                <p>
+                  My focus is on useful product outcomes: applying AI where it
+                  helps, connecting it to existing systems, and building
+                  dependable backend foundations.
+                </p>
+              </div>
             </div>
 
             <div
-              className='relative col-span-3 h-max rounded-2xl border-2 border-solid border-dark 
-            bg-light p-8 dark:border-light dark:bg-dark
-            xl:col-span-4 md:col-span-8 md:order-1
-            '
+              data-scroll-reveal
+              className='surface-card mx-auto w-full max-w-sm rounded-[2rem] border p-3 shadow-xl shadow-dark/5 dark:shadow-black/10'
             >
-              <div
-                className='absolute  top-0 -right-3 -z-10 h-[103%] w-[102%]  rounded-[2rem] rounded-br-3xl 
-                bg-dark
-        dark:bg-light  '
-              />
               <Image
-                className='h-auto w-full rounded-2xl border-2 border-solid border-dark'
-                priority={true}
+                className='aspect-[4/5] w-full rounded-[1.5rem] object-cover object-top'
                 src={profile}
-                alt='Bilal Chawdhary'
-                sizes='(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw'
+                alt='Muhammad Bilal'
+                sizes='(max-width: 767px) 80vw, 370px'
               />
             </div>
-            <div
-              className='col-span-2 flex flex-col items-end justify-between xl:col-span-8 xl:flex-row 
-            xl:items-center md:order-3'
-            >
-              <div className='flex flex-col items-end justify-center xl:items-center'>
-                <span className='inline-block text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl'>
-                  <AnimatedNumberFramerMotion value={1261} />+
-                </span>
-                <h3
-                  className='mb-4 text-xl font-medium capitalize text-dark/75 dark:text-light/75 
-                xl:text-center md:text-lg sm:text-base xs:text-sm'
-                >
-                  Days of Coding
-                </h3>
-              </div>
+          </section>
 
-              <div className='flex flex-col items-end justify-center xl:items-center'>
-                <span className='inline-block text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl'>
-                  <AnimatedNumberFramerMotion value={150} />
-                </span>
-                <h3
-                  className='mb-4 text-xl font-medium capitalize text-dark/75 dark:text-light/75 
-                xl:text-center md:text-lg sm:text-base xs:text-sm'
-                >
-                  Bugs Made
-                </h3>
-              </div>
-
-              <div className='flex flex-col items-end justify-center xl:items-center'>
-                <span className='inline-block text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl'>
-                  <AnimatedNumberFramerMotion value={99} />
-                </span>
-                <h3
-                  className='mb-4 text-xl font-medium capitalize text-dark/75 dark:text-light/75 
-                xl:text-center md:text-lg sm:text-base xs:text-sm'
-                >
-                  Bugs Crushed
-                </h3>
-              </div>
+          <section aria-labelledby='services-heading' className='mt-20 sm:mt-14'>
+            <div className='mb-7 max-w-2xl' data-scroll-reveal>
+              <p className='mb-2 text-xs font-bold uppercase tracking-[0.18em] text-primary dark:text-primaryDark'>
+                How I can help
+              </p>
+              <h2
+                id='services-heading'
+                className='text-3xl font-bold tracking-tight sm:text-2xl'
+              >
+                Services
+              </h2>
             </div>
-            <HireMe2 />
-          </div>
-
+            <ul className='grid grid-cols-3 gap-3 lg:grid-cols-2 sm:grid-cols-1'>
+              {services.map(service => (
+                <li
+                  key={service}
+                  data-scroll-reveal
+                  className='surface-card surface-card-interactive rounded-xl border px-4 py-4 text-sm font-medium'
+                >
+                  {service}
+                </li>
+              ))}
+            </ul>
+          </section>
+          </Layout>
           <Skills />
-        </Layout>
+        </ScrollReveal>
       </main>
     </>
   );
