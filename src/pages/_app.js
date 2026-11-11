@@ -1,7 +1,11 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import "@/styles/globals.css";
+<<<<<<< HEAD
 import { AnimatePresence, MotionConfig } from "framer-motion";
+=======
+import { AnimatePresence, MotionConfig } from "motion/react";
+>>>>>>> 9a456ef6f43e89478a55f4a21ce148f56b7c0999
 import { Montserrat } from "next/font/google";
 import Head from "next/head";
 import { useRouter } from "next/router";

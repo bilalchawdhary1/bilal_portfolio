@@ -1,4 +1,4 @@
-import { motion, useScroll } from "framer-motion";
+import { motion, useScroll } from "motion/react";
 
 const LiIcon = ({ reference, time }) => {
   const { scrollYProgress } = useScroll({

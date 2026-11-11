@@ -10,9 +10,6 @@ if (parsedSiteUrl.protocol !== "http:" && parsedSiteUrl.protocol !== "https:") {
 
 const nextConfig = {
   reactStrictMode: true,
-  env: {
-    NEXT_PUBLIC_SITE_URL: parsedSiteUrl.origin,
-  },
 };
 
 module.exports = nextConfig;

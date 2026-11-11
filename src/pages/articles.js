@@ -1,5 +1,9 @@
 import AnimatedText from "@/components/AnimatedText";
+<<<<<<< HEAD
 import {motion, useMotionValue} from "framer-motion";
+=======
+import {motion, useMotionValue} from "motion/react";
+>>>>>>> 9a456ef6f43e89478a55f4a21ce148f56b7c0999
 import SEO from "@/components/SEO";
 import Image from "next/image";
 import blog1 from "../../public/images/articles/Clay-Gatsby-theme.webp";
