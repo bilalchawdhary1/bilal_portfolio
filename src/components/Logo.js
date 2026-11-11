@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import {motion} from "framer-motion";
-=======
 import {motion} from "motion/react";
->>>>>>> 9a456ef6f43e89478a55f4a21ce148f56b7c0999
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

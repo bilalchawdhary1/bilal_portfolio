@@ -2,11 +2,7 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import Image from "next/image";
 import Link from "next/link";
-<<<<<<< HEAD
-import {useInView, useMotionValue, useSpring} from "framer-motion";
-=======
 import {useInView, useMotionValue, useSpring} from "motion/react";
->>>>>>> 9a456ef6f43e89478a55f4a21ce148f56b7c0999
 import {useEffect, useRef} from "react";
 import AnimatedText from "@/components/AnimatedText";
 import TransitionEffect from "@/components/TransitionEffect";

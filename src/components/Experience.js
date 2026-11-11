@@ -35,13 +35,11 @@ const education = [
 const Experience = () => (
   <section
     aria-label='Experience and education'
-    className='mx-auto grid w-full max-w-7xl grid-cols-2 gap-12 px-8 py-14 sm:grid-cols-1 sm:gap-10 sm:px-5 sm:py-10'
+    className='band mx-auto grid w-full max-w-7xl grid-cols-2 gap-12 px-8 py-16 sm:grid-cols-1 sm:gap-10 sm:px-5 sm:py-12'
   >
     <div>
-      <p className='mb-2 text-xs font-bold uppercase tracking-[0.18em] text-primary dark:text-primaryDark'>
-        Career history
-      </p>
-      <h2 className='mb-7 text-3xl font-bold tracking-tight sm:text-2xl'>
+      <p className='eyebrow'>Career history</p>
+      <h2 className='mb-7 text-balance text-3xl font-semibold tracking-tight sm:text-2xl'>
         Experience
       </h2>
       <ol className='experience-list space-y-4'>
@@ -71,10 +69,8 @@ const Experience = () => (
     </div>
 
     <div>
-      <p className='mb-2 text-xs font-bold uppercase tracking-[0.18em] text-primary dark:text-primaryDark'>
-        Academic background
-      </p>
-      <h2 className='mb-7 text-3xl font-bold tracking-tight sm:text-2xl'>
+      <p className='eyebrow'>Academic background</p>
+      <h2 className='mb-7 text-balance text-3xl font-semibold tracking-tight sm:text-2xl'>
         Education
       </h2>
       <ol className='experience-list education-list space-y-4'>

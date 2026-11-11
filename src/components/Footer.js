@@ -4,7 +4,7 @@ import Layout from "./Layout";
 
 const Footer = () => {
   return (
-    <footer className='w-full border-t border-dark/10 bg-white/35 dark:border-light/10 dark:bg-black/10'>
+    <footer className='w-full border-t border-dark/10 dark:border-white/[0.06]'>
       <Layout className='!py-6'>
         <div className='flex items-center justify-between gap-3 text-sm text-dark/65 dark:text-light/65 sm:flex-col sm:items-start'>
           <span>&copy; {new Date().getFullYear()} Muhammad Bilal</span>

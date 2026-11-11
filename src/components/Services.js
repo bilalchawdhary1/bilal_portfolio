@@ -22,15 +22,13 @@ const services = [
 const Services = () => (
   <section
     aria-labelledby='services-heading'
-    className='mx-auto w-full max-w-7xl px-8 py-14 sm:px-5 sm:py-10'
+    className='band mx-auto w-full max-w-7xl px-8 py-16 sm:px-5 sm:py-12'
   >
     <div className='mb-8 max-w-2xl' data-scroll-reveal>
-      <p className='mb-2 text-xs font-bold uppercase tracking-[0.18em] text-primary dark:text-primaryDark'>
-        How I can help
-      </p>
+      <p className='eyebrow'>How I can help</p>
       <h2
         id='services-heading'
-        className='text-3xl font-bold tracking-tight sm:text-2xl'
+        className='text-balance text-3xl font-semibold tracking-tight sm:text-2xl'
       >
         Practical engineering for product teams
       </h2>

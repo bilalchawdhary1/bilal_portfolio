@@ -21,49 +21,42 @@ export default function Home() {
       <TransitionEffect />
       <main className='text-dark dark:text-light'>
         <Layout className='!py-8 sm:!py-6'>
-          <section className='grid min-h-[calc(100svh-10rem)] grid-cols-[minmax(0,1.1fr)_minmax(260px,0.9fr)] items-center gap-12 py-8 lg:min-h-0 lg:grid-cols-1 lg:gap-8 md:grid-cols-1 md:gap-10 md:py-10'>
-            <div className='max-w-3xl'>
-              <h1 className='hero-enter hero-enter-1 text-6xl font-bold leading-[1.05] tracking-[-0.045em] lg:text-5xl sm:text-4xl'>
+          <section className='grid min-h-[calc(100svh-9.5rem)] grid-cols-[minmax(0,1.05fr)_minmax(300px,0.95fr)] items-center gap-14 py-6 lg:min-h-0 lg:grid-cols-1 lg:gap-10 md:py-8'>
+            <div className='max-w-xl'>
+              <p className='eyebrow hero-enter hero-enter-1'>Portfolio</p>
+              <h1 className='hero-enter hero-enter-2 text-balance text-6xl font-semibold leading-[1.02] tracking-[-0.045em] xl:text-5xl sm:text-4xl'>
                 Muhammad Bilal
               </h1>
-              <p className='hero-enter hero-enter-2 mt-4 text-xl font-medium leading-snug text-dark/75 dark:text-light/75 sm:text-lg'>
-                <span>AI Application Developer</span>{" "}
-                <span
-                  aria-hidden='true'
-                  className='px-2 text-primary/50 dark:text-primaryDark/60'
-                >
-                  |
-                </span>{" "}
-                <span>Python Backend Engineer</span>
+              <p className='hero-enter hero-enter-3 mt-4 text-xl font-medium leading-snug tracking-[-0.02em] text-dark/75 dark:text-light/75 sm:text-lg'>
+                AI Application Developer
+                <span aria-hidden='true' className='px-2 text-dark/30 dark:text-light/30'>
+                  /
+                </span>
+                Python Backend Engineer
               </p>
-              <p className='hero-enter hero-enter-3 mt-6 max-w-xl text-lg leading-8 text-dark/70 dark:text-light/70 md:text-base md:leading-7'>
+              <p className='hero-enter hero-enter-4 mt-6 max-w-lg text-lg leading-8 text-dark/70 dark:text-light/65 md:text-base md:leading-7'>
                 I build AI-powered applications, intelligent chatbots, and
-                scalable backend systems that solve real business problems.
+                Python backends that solve real product problems—LLM
+                integrations, REST APIs, and data systems included.
               </p>
-              <div className='hero-enter hero-enter-4 mt-8 flex flex-wrap items-center gap-3'>
-                <Link
-                  href='/projects/'
-                  className='inline-flex min-h-12 items-center justify-center rounded-lg border border-dark bg-dark px-5 py-3 text-sm font-semibold text-light transition-[transform,background-color,color,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-transparent hover:text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light dark:bg-light dark:text-dark dark:hover:bg-dark dark:hover:text-light dark:focus-visible:ring-primaryDark dark:focus-visible:ring-offset-dark'
-                >
+              <div className='hero-enter hero-enter-5 mt-8 flex flex-wrap items-center gap-3'>
+                <Link href='/projects/' className='btn btn-primary'>
                   View My Work
                 </Link>
-                <Link
-                  href='/contact/'
-                  className='inline-flex min-h-12 items-center justify-center rounded-lg border border-dark/20 px-5 py-3 text-sm font-semibold text-dark transition-[transform,background-color,color,border-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-dark hover:bg-dark hover:text-light hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light/20 dark:text-light dark:hover:border-light dark:hover:bg-light dark:hover:text-dark dark:focus-visible:ring-primaryDark dark:focus-visible:ring-offset-dark'
-                >
+                <Link href='/contact/' className='btn btn-ghost'>
                   Let&apos;s Discuss Your Project
                 </Link>
               </div>
               <div
                 role='group'
                 aria-label='Professional profiles'
-                className='hero-enter hero-enter-5 mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium'
+                className='mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium'
               >
                 <a
                   href='https://www.linkedin.com/in/bilal-fullstack'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='inline-flex min-h-11 items-center rounded-md text-dark/65 underline decoration-dark/25 underline-offset-4 transition-[transform,color] duration-200 hover:-translate-y-0.5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-light/65 dark:decoration-light/25 dark:hover:text-primaryDark dark:focus-visible:ring-primaryDark dark:focus-visible:ring-offset-dark'
+                  className='inline-flex min-h-11 items-center rounded-md text-dark/65 underline decoration-dark/20 underline-offset-4 transition-colors hover:text-primary dark:text-light/65 dark:decoration-light/20 dark:hover:text-primaryDark'
                 >
                   LinkedIn
                 </a>
@@ -71,14 +64,14 @@ export default function Home() {
                   href='https://github.com/bilalchawdhary1'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='inline-flex min-h-11 items-center rounded-md text-dark/65 underline decoration-dark/25 underline-offset-4 transition-[transform,color] duration-200 hover:-translate-y-0.5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-light/65 dark:decoration-light/25 dark:hover:text-primaryDark dark:focus-visible:ring-primaryDark dark:focus-visible:ring-offset-dark'
+                  className='inline-flex min-h-11 items-center rounded-md text-dark/65 underline decoration-dark/20 underline-offset-4 transition-colors hover:text-primary dark:text-light/65 dark:decoration-light/20 dark:hover:text-primaryDark'
                 >
                   GitHub
                 </a>
               </div>
             </div>
 
-            <div className='flex justify-center md:order-last'>
+            <div className='flex justify-center lg:justify-center'>
               <HeroVisual />
             </div>
           </section>

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import {motion} from "framer-motion";
-=======
 import {motion} from "motion/react";
->>>>>>> 9a456ef6f43e89478a55f4a21ce148f56b7c0999
 import {useRouter} from "next/router";
 import React, {useState} from "react";
 import Link from "next/link";
@@ -79,7 +75,7 @@ const ThemeButton = ({mode, setMode}) => (
     onClick={() => setMode(mode === "light" ? "dark" : "light")}
     aria-label={`Switch to ${mode === "light" ? "dark" : "light"} mode`}
     title={`Switch to ${mode === "light" ? "dark" : "light"} mode`}
-    className='flex h-10 w-10 items-center justify-center rounded-full border border-dark/10 bg-white/60 text-dark transition-[transform,color,background-color,border-color] duration-200 hover:-rotate-12 hover:border-primary/30 hover:bg-primary hover:text-white focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light/20 dark:bg-dark/60 dark:text-light dark:hover:border-primaryDark/40 dark:hover:bg-primaryDark dark:focus-visible:ring-primaryDark'
+    className='flex h-10 w-10 items-center justify-center rounded-full border border-dark/10 bg-white text-dark transition-[color,background-color,border-color] duration-200 hover:border-primary/40 hover:text-primary dark:border-white/10 dark:bg-card dark:text-light dark:hover:border-primaryDark/50 dark:hover:text-primaryDark'
   >
     {mode === "light" ? (
       <SunIcon className='h-5 w-5' />
@@ -94,7 +90,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className='sticky top-0 z-50 border-b border-dark/10 bg-light/85 backdrop-blur-xl dark:border-light/10 dark:bg-dark/85'>
+    <header className='sticky top-0 z-50 border-b border-dark/10 bg-light/92 backdrop-blur-md dark:border-white/[0.06] dark:bg-dark/92'>
       <div className='mx-auto flex max-w-7xl items-center justify-between gap-6 px-8 py-4 sm:px-5'>
         <Logo />
 
@@ -111,7 +107,7 @@ const Navbar = () => {
           <ThemeButton mode={mode} setMode={setMode} />
           <button
             type='button'
-            className='hidden h-10 w-10 items-center justify-center rounded-full border border-dark/10 bg-white/50 text-dark transition-colors hover:border-primary/30 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light/20 dark:bg-dark/50 dark:text-light dark:hover:border-primaryDark/40 dark:hover:text-primaryDark dark:focus-visible:ring-primaryDark lg:flex'
+            className='hidden h-10 w-10 items-center justify-center rounded-full border border-dark/10 bg-white text-dark transition-colors hover:border-primary/40 hover:text-primary dark:border-white/10 dark:bg-card dark:text-light dark:hover:border-primaryDark/50 dark:hover:text-primaryDark lg:flex'
             aria-label={isOpen ? "Close main menu" : "Open main menu"}
             aria-controls='mobile-menu'
             aria-expanded={isOpen}
@@ -146,7 +142,7 @@ const Navbar = () => {
         aria-label='Mobile navigation'
         aria-hidden={!isOpen}
         hidden={!isOpen}
-        className='absolute left-4 right-4 top-[calc(100%-0.25rem)] z-50 rounded-2xl border border-dark/10 bg-light/95 p-6 shadow-xl shadow-dark/10 backdrop-blur-xl dark:border-light/10 dark:bg-[#202630]/95 dark:shadow-black/25'
+        className='absolute left-4 right-4 top-[calc(100%+0.35rem)] z-50 rounded-2xl border border-dark/10 bg-light p-6 shadow-xl shadow-dark/10 dark:border-white/10 dark:bg-card dark:shadow-black/40'
         initial={false}
         animate={isOpen ? {opacity: 1, y: 0} : {opacity: 0, y: -8}}
         transition={{duration: 0.18}}

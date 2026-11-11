@@ -35,10 +35,8 @@ export default function About() {
           <Layout>
           <section className='grid grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] items-center gap-12 md:grid-cols-1 md:gap-8'>
             <div data-scroll-reveal>
-              <p className='mb-3 text-xs font-bold uppercase tracking-[0.18em] text-primary dark:text-primaryDark'>
-                About me
-              </p>
-              <h1 className='max-w-2xl text-5xl font-bold leading-tight tracking-tight sm:text-4xl'>
+              <p className='eyebrow'>About me</p>
+              <h1 className='max-w-2xl text-balance text-5xl font-semibold leading-tight tracking-[-0.03em] sm:text-4xl'>
                 Practical AI. Reliable Python.
               </h1>
               <div className='mt-6 max-w-2xl space-y-4 text-base leading-7 text-dark/75 dark:text-light/75'>
@@ -62,7 +60,7 @@ export default function About() {
 
             <div
               data-scroll-reveal
-              className='surface-card mx-auto w-full max-w-sm rounded-[2rem] border p-3 shadow-xl shadow-dark/5 dark:shadow-black/10'
+              className='surface-card mx-auto w-full max-w-sm rounded-[1.5rem] border p-3'
             >
               <Image
                 className='aspect-[4/5] w-full rounded-[1.5rem] object-cover object-top'
