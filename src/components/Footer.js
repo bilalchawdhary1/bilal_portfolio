@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Layout from "./Layout";
+import {GithubIcon} from "./Icons";
 
 const Footer = () => {
   return (
@@ -12,9 +13,10 @@ const Footer = () => {
             href='https://github.com/bilalchawdhary1'
             target='_blank'
             rel='noopener noreferrer'
-            className='rounded-md underline decoration-dark/25 underline-offset-4 transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:decoration-light/25 dark:hover:text-primaryDark dark:focus-visible:ring-primaryDark'
+            aria-label='Visit my GitHub profile'
+            className='rounded-full p-1 transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:hover:text-primaryDark dark:focus-visible:ring-primaryDark'
           >
-            GitHub
+            <GithubIcon className='h-6 w-6' />
           </Link>
         </div>
       </Layout>

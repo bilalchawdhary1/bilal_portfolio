@@ -57,13 +57,13 @@ const SocialLinks = ({mobile = false}) => (
         target='_blank'
         rel='noopener noreferrer'
         aria-label={`Visit my ${label} profile`}
-        className={`rounded-full p-1 text-dark transition-colors hover:bg-dark/5 hover:text-primary dark:text-light dark:hover:bg-light/10 dark:hover:text-primaryDark ${
-          mobile ? "h-6 w-6" : "h-5 w-5"
+        className={`flex items-center justify-center rounded-full text-dark transition-colors hover:bg-dark/5 hover:text-primary dark:text-light dark:hover:bg-light/10 dark:hover:text-primaryDark ${
+          mobile ? "h-9 w-9" : "h-8 w-8"
         }`}
         whileHover={{y: -2}}
         whileTap={{scale: 0.95}}
       >
-        <Icon />
+        <Icon className={mobile ? "h-7 w-7" : "h-6 w-6"} />
       </motion.a>
     ))}
   </div>
