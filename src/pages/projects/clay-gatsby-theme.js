@@ -106,7 +106,7 @@ export default function About() {
                 <Link
                   href='https://github.com/lilxyzz/clay-theme'
                   target={"_blank"}
-                  className='w-10'
+                  className='w-10 text-dark transition-colors hover:text-primary dark:text-light dark:hover:text-primaryDark'
                   rel='noopener noreferrer'
                   aria-label='View the original Clay Theme repository'
                 >

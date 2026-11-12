@@ -34,19 +34,16 @@ I work across AI application development and backend engineering, from LLM integ
 
 ## Selected Projects
 
-| Project | Overview | Links |
-| --- | --- | --- |
-| **SharpBuild AI Website Assistant** | A website knowledge assistant that answers from published content, cites sources, streams responses, and offers a human contact path. | [Source](https://github.com/bilalchawdhary1/SharpBuild-AI-Website-Assistant) |
-| **Mentra** | A tutorial-based voice learning platform with AI tutors, bookmarks, and recent sessions. | [Source](https://github.com/bilalchawdhary1/Mentra) |
-| **CareerVamp** | An AI-powered job application and resume platform. | Preview below |
-| **AI Mock Interview Platform** | An AI-powered interview practice application. | Preview below |
-| **StyleNest** | An e-commerce web application. | [Live project](https://style-nest-com.vercel.app/) · [Source](https://github.com/bilalchawdhary1/StyleNest.com) |
+| Project                             | Overview                                                                                                                              | Links                                                                                                           |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **SharpBuild AI Website Assistant** | A website knowledge assistant that answers from published content, cites sources, streams responses, and offers a human contact path. | [Source](https://github.com/bilalchawdhary1/SharpBuild-AI-Website-Assistant)                                    |
+| **Mentra**                          | A tutorial-based voice learning platform with AI tutors, bookmarks, and recent sessions.                                              | [Source](https://github.com/bilalchawdhary1/Mentra)                                                             |
+| **AI Mock Interview Platform**      | An AI-powered interview practice application.                                                                                         | Preview below                                                                                                   |
+| **StyleNest**                       | An e-commerce web application.                                                                                                        | [Live project](https://style-nest-com.vercel.app/) · [Source](https://github.com/bilalchawdhary1/StyleNest.com) |
 
 ### Project previews
 
 ![Mentra project preview](public/images/projects/Mentra.png)
-
-![CareerVamp project preview](public/images/projects/CareerVamp.png)
 
 ![AI Mock Interview project preview](public/images/projects/AI_Mock.png)
 
@@ -102,12 +99,12 @@ Use a Gmail app password, not your account password. Keep real credentials out o
 
 ## Commands
 
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Start the local development server |
-| `npm run lint` | Run the Next.js ESLint checks |
+| Command         | Purpose                                                |
+| --------------- | ------------------------------------------------------ |
+| `npm run dev`   | Start the local development server                     |
+| `npm run lint`  | Run the Next.js ESLint checks                          |
 | `npm run build` | Create the production build and generate sitemap files |
-| `npm start` | Serve the production build locally |
+| `npm start`     | Serve the production build locally                     |
 
 ## Project Structure
 

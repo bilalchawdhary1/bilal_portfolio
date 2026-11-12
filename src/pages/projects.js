@@ -5,7 +5,6 @@ import TransitionEffect from "@/components/TransitionEffect";
 import Image from "next/image";
 import Link from "next/link";
 import aiMockImage from "../../public/images/projects/AI_Mock.png";
-import careerVampImage from "../../public/images/projects/CareerVamp.png";
 import mentraImage from "../../public/images/projects/Mentra.png";
 import styleNestImage from "../../public/images/projects/StyleNest.png";
 
@@ -32,23 +31,6 @@ const supportingProjects = [
     ],
   },
   {
-    title: "CareerVamp",
-    category: "AI career platform",
-    summary: "An AI-powered job application and resume platform.",
-    image: {
-      src: careerVampImage,
-      alt: "CareerVamp project preview",
-    },
-    tagsLabel: "Project focus",
-    tags: ["AI", "Job applications", "Resume tools"],
-    links: [
-      {
-        href: "/images/projects/CareerVamp.png",
-        label: "View preview",
-      },
-    ],
-  },
-  {
     title: "AI Mock Interview Platform",
     category: "AI interview practice",
     summary: "An AI-powered interview practice application.",
@@ -56,8 +38,14 @@ const supportingProjects = [
       src: aiMockImage,
       alt: "AI mock interview platform project preview",
     },
-    tagsLabel: "Project focus",
-    tags: ["AI", "Interview practice"],
+    tagsLabel: "Highlights",
+    tags: [
+      "AI mock interviews",
+      "Next.js",
+      "Question bank",
+      "Smart suggestions",
+      "Readiness score",
+    ],
     links: [
       {
         href: "/images/projects/AI_Mock.png",
@@ -73,8 +61,14 @@ const supportingProjects = [
       src: styleNestImage,
       alt: "StyleNest e-commerce web application",
     },
-    tagsLabel: "Project focus",
-    tags: ["E-commerce", "Web application"],
+    tagsLabel: "Highlights",
+    tags: [
+      "E-commerce",
+      "Product catalog",
+      "Category browsing",
+      "New arrivals",
+      "Vercel",
+    ],
     links: [
       {
         href: "https://style-nest-com.vercel.app/",
@@ -110,7 +104,9 @@ const ProjectCard = ({project}) => (
         <p className='mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary dark:text-primaryDark'>
           {project.category}
         </p>
-        <h3 className='text-xl font-bold leading-snug'>{project.title}</h3>
+        <h3 className='text-xl font-semibold leading-snug tracking-tight'>
+          {project.title}
+        </h3>
         <p className='mt-3 text-sm leading-6 text-dark/70 dark:text-light/70'>
           {project.summary}
         </p>
@@ -119,13 +115,10 @@ const ProjectCard = ({project}) => (
       {project.tags?.length > 0 && (
         <ul
           aria-label={`${project.title} ${project.tagsLabel}`}
-          className='mt-4 flex flex-wrap gap-2'
+          className='mt-4 flex flex-wrap gap-1.5'
         >
           {project.tags.map(tag => (
-            <li
-              key={tag}
-              className='rounded-full border border-dark/10 px-2.5 py-1 text-xs text-dark/70 dark:border-light/15 dark:text-light/75'
-            >
+            <li key={tag} className='chip'>
               {tag}
             </li>
           ))}
@@ -160,7 +153,7 @@ const SharpBuildProject = () => (
         <p className='mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary dark:text-primaryDark'>
           Featured · Retrieval-backed AI
         </p>
-        <h2 className='text-3xl font-semibold tracking-tight sm:text-2xl'>
+        <h2 className='text-balance text-3xl font-semibold tracking-tight sm:text-2xl'>
           SharpBuild AI Website Assistant
         </h2>
         <p className='mt-4 max-w-3xl text-sm leading-7 text-dark/70 dark:text-light/70'>
@@ -174,10 +167,7 @@ const SharpBuildProject = () => (
         >
           {["FastAPI", "Gemini", "PostgreSQL", "pgvector", "Next.js"].map(
             technology => (
-              <span
-                key={technology}
-                className='rounded-full border border-dark/10 px-3 py-1.5 text-xs font-medium text-dark/75 dark:border-light/15 dark:text-light/75'
-              >
+              <span key={technology} className='chip chip-lg'>
                 {technology}
               </span>
             ),
@@ -263,9 +253,7 @@ export default function Projects() {
       <main className='text-dark dark:text-light'>
         <Layout className='!pb-20'>
           <header className='mb-10 max-w-3xl'>
-            <p className='eyebrow'>
-              Selected work
-            </p>
+            <p className='eyebrow'>Selected work</p>
             <h1 className='text-5xl font-semibold tracking-tight sm:text-4xl'>
               Software built around real product needs
             </h1>
@@ -282,18 +270,16 @@ export default function Projects() {
 
               <section aria-labelledby='other-projects-heading'>
                 <div className='mb-5 pt-7' data-scroll-reveal>
-                  <p className='eyebrow'>
-                    More selected work
-                  </p>
+                  <p className='eyebrow'>More selected work</p>
                   <h2
                     id='other-projects-heading'
                     className='text-2xl font-semibold tracking-tight'
                   >
-                    Learning, career, and commerce products
+                    Learning, interview practice, and commerce products
                   </h2>
                 </div>
 
-                <div className='grid grid-cols-2 gap-4 md:grid-cols-1'>
+                <div className='grid grid-cols-3 gap-4 lg:grid-cols-1'>
                   {supportingProjects.map(project => (
                     <ProjectCard key={project.title} project={project} />
                   ))}

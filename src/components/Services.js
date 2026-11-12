@@ -4,18 +4,21 @@ const services = [
     title: "AI product integration",
     description:
       "Add OpenAI or Gemini capabilities to an existing product with clear, useful user flows.",
+    stack: ["OpenAI", "Gemini", "LLM integration"],
   },
   {
     number: "02",
     title: "AI assistants and workflows",
     description:
       "Build chat and voice assistants, knowledge search, and workflow automation around real product needs.",
+    stack: ["Chat", "Voice", "Knowledge search", "Automation"],
   },
   {
     number: "03",
     title: "Python backends and SaaS",
     description:
       "Develop FastAPI services, REST APIs, database-backed features, and full-stack product experiences.",
+    stack: ["FastAPI", "REST APIs", "PostgreSQL", "MongoDB"],
   },
 ];
 
@@ -24,15 +27,20 @@ const Services = () => (
     aria-labelledby='services-heading'
     className='band mx-auto w-full max-w-7xl px-8 py-16 sm:px-5 sm:py-12'
   >
-    <div className='mb-8 max-w-2xl' data-scroll-reveal>
-      <p className='eyebrow'>How I can help</p>
-      <h2
-        id='services-heading'
-        className='text-balance text-3xl font-semibold tracking-tight sm:text-2xl'
-      >
-        Practical engineering for product teams
-      </h2>
-      <p className='mt-3 text-sm leading-6 text-dark/70 dark:text-light/70'>
+    <div
+      className='mb-10 grid grid-cols-2 items-end gap-10 md:grid-cols-1 md:gap-4'
+      data-scroll-reveal
+    >
+      <div>
+        <p className='eyebrow'>How I can help</p>
+        <h2
+          id='services-heading'
+          className='text-balance text-3xl font-semibold tracking-tight sm:text-2xl'
+        >
+          Practical engineering for product teams
+        </h2>
+      </div>
+      <p className='max-w-xl text-sm leading-6 text-dark/70 dark:text-light/70'>
         Connect AI capability to the product around it: clear interfaces,
         dependable APIs, and software shaped around the problem.
       </p>
@@ -43,15 +51,31 @@ const Services = () => (
         <article
           key={service.number}
           data-scroll-reveal
-          className='surface-card surface-card-interactive group rounded-2xl border p-6 sm:p-5'
+          className='surface-card surface-card-interactive accent-card flex flex-col rounded-2xl border p-6 sm:p-5'
         >
-          <p className='mb-8 inline-flex h-8 min-w-8 items-center justify-center rounded-full border border-primary/15 bg-primary/5 px-2 font-mono text-xs font-semibold tracking-widest text-primary dark:border-primaryDark/20 dark:bg-primaryDark/10 dark:text-primaryDark'>
+          <p className='mb-10 flex items-center gap-3 font-mono text-xs font-semibold tracking-widest text-primary dark:text-primaryDark'>
             {service.number}
+            <span
+              aria-hidden='true'
+              className='h-px flex-1 bg-dark/10 dark:bg-light/10'
+            />
           </p>
-          <h3 className='text-lg font-semibold'>{service.title}</h3>
+          <h3 className='text-lg font-semibold tracking-tight'>
+            {service.title}
+          </h3>
           <p className='mt-3 text-sm leading-6 text-dark/70 dark:text-light/70'>
             {service.description}
           </p>
+          <ul
+            aria-label={`${service.title} technologies`}
+            className='mt-auto flex flex-wrap gap-1.5 pt-6'
+          >
+            {service.stack.map(item => (
+              <li key={item} className='chip'>
+                {item}
+              </li>
+            ))}
+          </ul>
         </article>
       ))}
     </div>

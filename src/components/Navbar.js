@@ -49,7 +49,7 @@ const NavigationLink = ({href, title, onClick, mobile = false}) => {
 };
 
 const SocialLinks = ({mobile = false}) => (
-  <div className='flex items-center gap-4'>
+  <div className='flex items-center gap-2'>
     {socialLinks.map(({href, label, Icon}) => (
       <motion.a
         key={label}
@@ -57,13 +57,13 @@ const SocialLinks = ({mobile = false}) => (
         target='_blank'
         rel='noopener noreferrer'
         aria-label={`Visit my ${label} profile`}
-        className={`flex items-center justify-center rounded-full text-dark transition-colors hover:bg-dark/5 hover:text-primary dark:text-light dark:hover:bg-light/10 dark:hover:text-primaryDark ${
-          mobile ? "h-9 w-9" : "h-8 w-8"
+        className={`flex items-center justify-center rounded-full border border-dark/10 bg-white text-dark transition-[color,background-color,border-color] duration-200 hover:border-primary/40 hover:text-primary dark:border-white/10 dark:bg-card dark:text-light dark:hover:border-primaryDark/50 dark:hover:text-primaryDark ${
+          mobile ? "h-11 w-11" : "h-10 w-10"
         }`}
         whileHover={{y: -2}}
         whileTap={{scale: 0.95}}
       >
-        <Icon className={mobile ? "h-7 w-7" : "h-6 w-6"} />
+        <Icon className={mobile ? "h-6 w-6" : "h-5 w-5"} />
       </motion.a>
     ))}
   </div>
