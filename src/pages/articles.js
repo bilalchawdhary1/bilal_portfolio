@@ -1,4 +1,3 @@
-import AnimatedText from "@/components/AnimatedText";
 import {motion, useMotionValue} from "motion/react";
 import SEO from "@/components/SEO";
 import Image from "next/image";
@@ -77,20 +76,23 @@ const Article = ({img, title, date, link}) => {
       className='surface-card surface-card-interactive relative my-2 flex w-full items-center justify-between rounded-2xl border p-5 text-dark first:mt-0 sm:flex-col sm:items-start sm:gap-3 dark:text-light'
     >
       <MovingImg img={img} title={title} link={link} />
-      <span
-        className='min-w-max pl-4 font-semibold text-primary dark:text-primaryDark sm:self-start sm:pl-0 xs:text-sm'
-      >
+      <span className='min-w-max pl-4 font-semibold text-primary dark:text-primaryDark sm:self-start sm:pl-0 xs:text-sm'>
         {date}
       </span>
     </motion.li>
   );
 };
 
-const FeaturedArticle = ({img, title, time, summary, link, priority = false}) => {
+const FeaturedArticle = ({
+  img,
+  title,
+  time,
+  summary,
+  link,
+  priority = false,
+}) => {
   return (
-    <li
-      className='surface-card surface-card-interactive relative col-span-1 w-full rounded-2xl border p-4'
-    >
+    <li className='surface-card surface-card-interactive relative col-span-1 w-full rounded-2xl border p-4'>
       <Link
         href={link}
         target={"_blank"}
@@ -116,7 +118,9 @@ const FeaturedArticle = ({img, title, time, summary, link, priority = false}) =>
           {title}
         </h2>
       </Link>
-      <p className='mb-3 text-sm leading-6 text-dark/70 dark:text-light/70'>{summary}</p>
+      <p className='mb-3 text-sm leading-6 text-dark/70 dark:text-light/70'>
+        {summary}
+      </p>
       <span className='text-sm font-semibold text-primary dark:text-primaryDark'>
         {time}
       </span>
@@ -133,14 +137,17 @@ export default function Articles() {
         path='/articles'
       />
       <TransitionEffect />
-      <main
-        className='mb-16 flex w-full flex-col items-center justify-center overflow-hidden dark:text-light'
-      >
+      <main className='mb-16 flex w-full flex-col items-center justify-center overflow-hidden dark:text-light'>
         <Layout className='pt-16'>
-          <AnimatedText
-            text='Words Influence the World 🌎'
-            className='!mb-12 !text-5xl !leading-tight !tracking-tight lg:!text-5xl sm:!mb-8 sm:!text-4xl'
-          />
+          <header className='mb-12 max-w-3xl sm:mb-8'>
+            <p className='eyebrow'>Writing</p>
+            <h1 className='text-balance text-5xl font-semibold tracking-tight sm:text-4xl'>
+              Articles
+            </h1>
+            <p className='mt-4 text-base leading-7 text-dark/70 dark:text-light/70'>
+              Selected web development articles and reading resources.
+            </p>
+          </header>
           <ul className='grid grid-cols-2 gap-6 lg:gap-5 md:grid-cols-1'>
             <FeaturedArticle
               img={blog1}
@@ -160,7 +167,7 @@ export default function Articles() {
             />
           </ul>
 
-          <h2 className='mb-8 mt-20 w-full text-center text-3xl font-semibold tracking-tight sm:mt-14 sm:text-2xl'>
+          <h2 className='mb-8 mt-20 w-full text-3xl font-semibold tracking-tight sm:mt-14 sm:text-2xl'>
             All Articles
           </h2>
 

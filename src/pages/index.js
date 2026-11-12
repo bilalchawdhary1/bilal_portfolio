@@ -1,4 +1,6 @@
+import CallToAction from "@/components/CallToAction";
 import Experience from "@/components/Experience";
+import FeaturedWork from "@/components/FeaturedWork";
 import HeroVisual from "@/components/HeroVisual";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
@@ -31,7 +33,10 @@ export default function Home() {
               </h1>
               <p className='hero-enter hero-enter-3 mt-4 text-xl font-medium leading-snug tracking-[-0.02em] text-dark/75 dark:text-light/75 sm:text-lg'>
                 AI Application Developer
-                <span aria-hidden='true' className='px-2 text-dark/30 dark:text-light/30'>
+                <span
+                  aria-hidden='true'
+                  className='px-2 text-dark/30 dark:text-light/30'
+                >
                   /
                 </span>
                 Python Backend Engineer
@@ -79,9 +84,11 @@ export default function Home() {
           </section>
         </Layout>
         <ScrollReveal>
+          <FeaturedWork />
           <Services />
           <Skills />
           <Experience />
+          <CallToAction />
         </ScrollReveal>
       </main>
     </>
