@@ -2,17 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import mentraImage from "../../public/images/projects/Mentra.png";
 import mockInterviewImage from "../../public/images/projects/AI_Mock.png";
+import styleNestImage from "../../public/images/projects/StyleNest.png";
 
 const pipeline = ["Crawl", "Index", "Retrieve", "Answer"];
 
 const work = [
-  {
-    title: "SharpBuild AI Website Assistant",
-    label: "Featured · Retrieval-backed AI",
-    description:
-      "A website knowledge assistant that answers from published content and links answers to their sources.",
-    tags: ["FastAPI", "Gemini", "PostgreSQL", "pgvector", "Next.js"],
-  },
   {
     title: "Mentra",
     label: "Tutorial-based voice AI learning",
@@ -35,6 +29,15 @@ const work = [
       "Smart suggestions",
       "Readiness score",
     ],
+  },
+  {
+    title: "StyleNest",
+    label: "E-commerce platform",
+    description:
+      "A modern e-commerce platform for fashion and lifestyle products.",
+    image: styleNestImage,
+    alt: "StyleNest project preview",
+    tags: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
   },
 ];
 

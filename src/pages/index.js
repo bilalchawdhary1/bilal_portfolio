@@ -1,4 +1,3 @@
-import CallToAction from "@/components/CallToAction";
 import Experience from "@/components/Experience";
 import FeaturedWork from "@/components/FeaturedWork";
 import HeroVisual from "@/components/HeroVisual";
@@ -88,7 +87,6 @@ export default function Home() {
           <Services />
           <Skills />
           <Experience />
-          <CallToAction />
         </ScrollReveal>
       </main>
     </>
