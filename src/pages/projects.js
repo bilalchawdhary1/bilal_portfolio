@@ -160,7 +160,7 @@ const SharpBuildProject = () => (
         <p className='mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary dark:text-primaryDark'>
           Featured · Retrieval-backed AI
         </p>
-        <h2 className='text-3xl font-bold tracking-tight sm:text-2xl'>
+        <h2 className='text-3xl font-semibold tracking-tight sm:text-2xl'>
           SharpBuild AI Website Assistant
         </h2>
         <p className='mt-4 max-w-3xl text-sm leading-7 text-dark/70 dark:text-light/70'>
@@ -263,10 +263,10 @@ export default function Projects() {
       <main className='text-dark dark:text-light'>
         <Layout className='!pb-20'>
           <header className='mb-10 max-w-3xl'>
-            <p className='mb-3 text-xs font-bold uppercase tracking-[0.18em] text-primary dark:text-primaryDark'>
+            <p className='eyebrow'>
               Selected work
             </p>
-            <h1 className='text-5xl font-bold tracking-tight sm:text-4xl'>
+            <h1 className='text-5xl font-semibold tracking-tight sm:text-4xl'>
               Software built around real product needs
             </h1>
             <p className='mt-4 text-base leading-7 text-dark/70 dark:text-light/70'>
@@ -282,12 +282,12 @@ export default function Projects() {
 
               <section aria-labelledby='other-projects-heading'>
                 <div className='mb-5 pt-7' data-scroll-reveal>
-                  <p className='mb-2 text-xs font-bold uppercase tracking-[0.16em] text-primary dark:text-primaryDark'>
+                  <p className='eyebrow'>
                     More selected work
                   </p>
                   <h2
                     id='other-projects-heading'
-                    className='text-2xl font-bold tracking-tight'
+                    className='text-2xl font-semibold tracking-tight'
                   >
                     Learning, career, and commerce products
                   </h2>

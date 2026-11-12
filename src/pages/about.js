@@ -73,12 +73,12 @@ export default function About() {
 
           <section aria-labelledby='services-heading' className='mt-20 sm:mt-14'>
             <div className='mb-7 max-w-2xl' data-scroll-reveal>
-              <p className='mb-2 text-xs font-bold uppercase tracking-[0.18em] text-primary dark:text-primaryDark'>
+              <p className='eyebrow'>
                 How I can help
               </p>
               <h2
                 id='services-heading'
-                className='text-3xl font-bold tracking-tight sm:text-2xl'
+                className='text-3xl font-semibold tracking-tight sm:text-2xl'
               >
                 Services
               </h2>

@@ -4,7 +4,7 @@ import SEO from "@/components/SEO";
 import Image from "next/image";
 import blog1 from "../../public/images/articles/Clay-Gatsby-theme.webp";
 import blog2 from "../../public/images/articles/My-MacBook-Setup-For-Development-2024.webp";
-import loading from "../../public/images/articles/GTA6-VICE.gif";
+import loading from "../../public/images/articles/GTA6-VICE.webp";
 
 import Layout from "@/components/Layout";
 import Link from "next/link";
@@ -160,7 +160,7 @@ export default function Articles() {
             />
           </ul>
 
-          <h2 className='mb-8 mt-20 w-full text-center text-3xl font-bold tracking-tight sm:mt-14 sm:text-2xl'>
+          <h2 className='mb-8 mt-20 w-full text-center text-3xl font-semibold tracking-tight sm:mt-14 sm:text-2xl'>
             All Articles
           </h2>
 

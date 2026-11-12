@@ -63,7 +63,7 @@ export default function About() {
               <h2 className='mb-4 text-2xl font-bold capitalize text-dark/75 dark:text-light/75'>
                 Unlocking the Power of Gatsby v5+ & NetlifyCMS with Clay Theme.
               </h2>
-              <h3 className='mb-4 text-lg font-bold  text-lightGreen dark:text-primaryDark'>
+              <h3 className='mb-4 text-lg font-bold  text-primary dark:text-primaryDark'>
                 Content | Web Design | UX/UI | Development
               </h3>
               <div classNname='w-full border-2 border-solid border-light bg-light'></div>

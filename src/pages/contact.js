@@ -58,10 +58,10 @@ export default function Contact() {
       <main className='text-dark dark:text-light'>
         <Layout className='!pb-20'>
           <header className='mb-10 max-w-3xl'>
-            <p className='mb-3 text-xs font-bold uppercase tracking-[0.18em] text-primary dark:text-primaryDark'>
+            <p className='eyebrow'>
               Get in touch
             </p>
-            <h1 className='text-5xl font-bold tracking-tight sm:text-4xl'>
+            <h1 className='text-5xl font-semibold tracking-tight sm:text-4xl'>
               Let’s talk about your project.
             </h1>
           </header>
@@ -173,7 +173,7 @@ export default function Contact() {
 
                 <button
                   type='submit'
-                  className='inline-flex min-h-11 items-center justify-center rounded-lg border border-dark bg-dark px-5 py-3 text-sm font-semibold text-light transition-[transform,background-color,color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-transparent hover:text-dark hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light dark:bg-light dark:text-dark dark:hover:bg-dark dark:hover:text-light dark:focus-visible:ring-primaryDark'
+                  className='btn btn-primary'
                 >
                   Send message
                 </button>

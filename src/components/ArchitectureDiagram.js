@@ -1,7 +1,9 @@
-import {useEffect, useMemo, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
-const BOARD = {width: 500, height: 500};
-const NODE = {w: 0.28, h: 0.13};
+// Isometric "exploded layer" view of an AI application. Each plate is one
+// layer of the stack; cards face the camera and wires carry the request path.
+// Everything is CSS 3D (transforms only), so there is no WebGL cost and no
+// extra dependency.
 
 const nodes = [
   {
@@ -10,44 +12,49 @@ const nodes = [
     label: "Applications",
     meta: "Product interfaces",
     detail: "Interfaces where people use the AI feature.",
-    x: 0.5,
-    y: 0.15,
-  },
-  {
-    id: "llm",
-    index: "02",
-    label: "LLM Processing",
-    meta: "Prompts and streams",
-    detail: "Prompt assembly, model calls, and streamed replies.",
-    x: 0.16,
-    y: 0.4,
+    layer: 0,
+    ox: 0,
+    oy: 0,
   },
   {
     id: "api",
-    index: "03",
+    index: "02",
     label: "API Layer",
     meta: "REST contracts",
     detail: "The REST boundary between clients and Python services.",
-    x: 0.5,
-    y: 0.4,
-  },
-  {
-    id: "models",
-    index: "04",
-    label: "AI Models",
-    meta: "OpenAI · Gemini",
-    detail: "Provider integrations such as OpenAI and Gemini.",
-    x: 0.84,
-    y: 0.4,
+    layer: 1,
+    ox: 0,
+    oy: 0,
   },
   {
     id: "backend",
-    index: "05",
+    index: "03",
     label: "FastAPI",
     meta: "Python services",
     detail: "Python services that own workflow, validation, and orchestration.",
-    x: 0.5,
-    y: 0.65,
+    layer: 2,
+    ox: 0,
+    oy: 0,
+  },
+  {
+    id: "llm",
+    index: "04",
+    label: "LLM Processing",
+    meta: "Prompts and streams",
+    detail: "Prompt assembly, model calls, and streamed replies.",
+    layer: 3,
+    ox: -62,
+    oy: -48,
+  },
+  {
+    id: "models",
+    index: "05",
+    label: "AI Models",
+    meta: "OpenAI · Gemini",
+    detail: "Provider integrations such as OpenAI and Gemini.",
+    layer: 3,
+    ox: 62,
+    oy: 48,
   },
   {
     id: "data",
@@ -55,46 +62,48 @@ const nodes = [
     label: "Database",
     meta: "PostgreSQL · MongoDB",
     detail: "PostgreSQL and MongoDB for the records those services use.",
-    x: 0.5,
-    y: 0.88,
+    layer: 4,
+    ox: 0,
+    oy: 0,
   },
 ];
 
-const links = [
-  {id: "apps-api", from: "apps", to: "api", start: "bottom", end: "top", dur: "6.6s"},
-  {id: "llm-api", from: "llm", to: "api", start: "right", end: "left", dur: "5.8s"},
-  {id: "api-models", from: "api", to: "models", start: "right", end: "left", dur: "6.9s"},
-  {id: "api-backend", from: "api", to: "backend", start: "bottom", end: "top", dur: "6.2s"},
-  {id: "backend-data", from: "backend", to: "data", start: "bottom", end: "top", dur: "7.2s"},
+const nodeById = Object.fromEntries(nodes.map(node => [node.id, node]));
+const PLATE_COUNT = 5;
+const plateOwners = [["apps"], ["api"], ["backend"], ["llm", "models"], ["data"]];
+
+// Vertical wires run between plates along the centre of the stack.
+const wires = [
+  {id: "apps-api", from: 0, to: 1, ids: ["apps", "api"], dur: "3.4s", delay: "-0.4s"},
+  {id: "api-backend", from: 1, to: 2, ids: ["api", "backend"], dur: "3.4s", delay: "-1.6s"},
+  {
+    id: "backend-data",
+    from: 2,
+    to: 4,
+    ids: ["backend", "llm", "models", "data"],
+    dur: "4.6s",
+    delay: "-2.3s",
+  },
 ];
 
-const nodeById = Object.fromEntries(nodes.map(node => [node.id, node]));
-const mobileOrder = ["apps", "api", "llm", "models", "backend", "data"];
+// Short stubs on the AI layer branch off the trunk toward each card.
+const traces = [
+  {id: "trace-llm", node: "llm", angle: 218, length: 24},
+  {id: "trace-models", node: "models", angle: 38, length: 24},
+];
 
-function sidePoint(node, side) {
-  const cx = node.x * BOARD.width;
-  const cy = node.y * BOARD.height;
-  const halfW = (NODE.w / 2) * BOARD.width;
-  const halfH = (NODE.h / 2) * BOARD.height;
+const mobileOrder = nodes.map(node => node.id);
 
-  if (side === "top") return [cx, cy - halfH];
-  if (side === "bottom") return [cx, cy + halfH];
-  if (side === "left") return [cx - halfW, cy];
-  return [cx + halfW, cy];
-}
-
-function linkPath(link) {
-  const [x1, y1] = sidePoint(nodeById[link.from], link.start);
-  const [x2, y2] = sidePoint(nodeById[link.to], link.end);
-  return `M ${x1.toFixed(1)} ${y1.toFixed(1)} L ${x2.toFixed(1)} ${y2.toFixed(1)}`;
-}
-
-function NodeButton({node, active, positioned, onHover, onHoverEnd, onFocus, onBlur}) {
+function NodeButton({node, active, floating, onHover, onHoverEnd, onFocus, onBlur}) {
   return (
     <button
       type='button'
-      className={`arch-node${active ? " is-active" : ""}`}
-      style={positioned ? {left: `${node.x * 100}%`, top: `${node.y * 100}%`} : undefined}
+      className={`arch-node${active ? " is-active" : ""}${floating ? " iso-card" : ""}`}
+      style={
+        floating
+          ? {"--layer": node.layer, "--ox": node.ox, "--oy": node.oy}
+          : undefined
+      }
       aria-describedby='architecture-caption'
       onPointerEnter={onHover}
       onPointerLeave={onHoverEnd}
@@ -116,12 +125,9 @@ export default function ArchitectureDiagram() {
   const [hoverId, setHoverId] = useState(null);
   const [focusId, setFocusId] = useState(null);
   const [animateFlows, setAnimateFlows] = useState(false);
+  const [inView, setInView] = useState(true);
   const activeId = hoverId || focusId;
-  const activeNode = nodes.find(node => node.id === activeId);
-  const paths = useMemo(
-    () => links.map(link => ({...link, d: linkPath(link)})),
-    [],
-  );
+  const activeNode = nodeById[activeId];
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -134,8 +140,8 @@ export default function ArchitectureDiagram() {
         reducedMotion.matches || coarsePointer.matches || smallViewport.matches;
       stage?.setAttribute("data-static", frozen ? "true" : "false");
       if (frozen && stage) {
-        stage.style.setProperty("--arch-x", "0px");
-        stage.style.setProperty("--arch-y", "0px");
+        stage.style.setProperty("--tilt-x", "0");
+        stage.style.setProperty("--tilt-z", "0");
       }
       setAnimateFlows(!reducedMotion.matches && !smallViewport.matches);
     };
@@ -145,10 +151,21 @@ export default function ArchitectureDiagram() {
     coarsePointer.addEventListener("change", sync);
     smallViewport.addEventListener("change", sync);
 
+    // Pause the data-flow animation when the visual is off screen.
+    let observer;
+    if (stage && "IntersectionObserver" in window) {
+      observer = new IntersectionObserver(
+        ([entry]) => setInView(entry.isIntersecting),
+        {threshold: 0.05},
+      );
+      observer.observe(stage);
+    }
+
     return () => {
       reducedMotion.removeEventListener("change", sync);
       coarsePointer.removeEventListener("change", sync);
       smallViewport.removeEventListener("change", sync);
+      observer?.disconnect();
       if (frameRef.current) window.cancelAnimationFrame(frameRef.current);
     };
   }, []);
@@ -158,20 +175,21 @@ export default function ArchitectureDiagram() {
     const stage = stageRef.current;
     if (!stage || stage.dataset.static !== "false") return;
     const bounds = stage.getBoundingClientRect();
-    const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 8;
-    const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 6;
+    const px = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const py = (event.clientY - bounds.top) / bounds.height - 0.5;
     if (frameRef.current) return;
     frameRef.current = window.requestAnimationFrame(() => {
       frameRef.current = 0;
-      stage.style.setProperty("--arch-x", `${x.toFixed(2)}px`);
-      stage.style.setProperty("--arch-y", `${y.toFixed(2)}px`);
+      // Small, bounded changes to the camera angle (degrees).
+      stage.style.setProperty("--tilt-x", (py * -8).toFixed(2));
+      stage.style.setProperty("--tilt-z", (px * 12).toFixed(2));
     });
   };
 
-  const resetParallax = () => {
+  const resetTilt = () => {
     const stage = stageRef.current;
-    stage?.style.setProperty("--arch-x", "0px");
-    stage?.style.setProperty("--arch-y", "0px");
+    stage?.style.setProperty("--tilt-x", "0");
+    stage?.style.setProperty("--tilt-z", "0");
   };
 
   const bindNode = node => ({
@@ -187,6 +205,8 @@ export default function ArchitectureDiagram() {
     onBlur: () => setFocusId(current => (current === node.id ? null : current)),
   });
 
+  const flowing = animateFlows && inView;
+
   return (
     <figure className='arch-frame'>
       <figcaption className='arch-frame-bar'>
@@ -197,48 +217,87 @@ export default function ArchitectureDiagram() {
         ref={stageRef}
         className='arch-stage'
         data-static='true'
+        data-flowing={flowing ? "true" : "false"}
         onPointerMove={handlePointerMove}
-        onPointerLeave={resetParallax}
+        onPointerLeave={resetTilt}
       >
         <div className='arch-board'>
-          <div className='arch-depth' aria-hidden='true' />
-          <div className='arch-graph' role='group' aria-label='Layers of an AI application'>
-            <svg
-              className='arch-svg'
-              viewBox={`0 0 ${BOARD.width} ${BOARD.height}`}
-              aria-hidden='true'
+          <div className='iso-scene'>
+            <div
+              className='iso-world'
+              role='group'
+              aria-label='Layers of an AI application'
             >
-              {paths.map(link => {
-                const hot = activeId === link.from || activeId === link.to;
+              {Array.from({length: PLATE_COUNT}, (_, layer) => {
+                const hot = activeNode && plateOwners[layer].includes(activeNode.id);
                 return (
-                  <path
-                    key={link.id}
-                    d={link.d}
-                    className={`arch-link${hot ? " is-active" : ""}`}
+                  <div
+                    key={layer}
+                    aria-hidden='true'
+                    className={`iso-plate${hot ? " is-active" : ""}`}
+                    style={{"--layer": layer}}
                   />
                 );
               })}
-              {animateFlows &&
-                paths.map((link, index) => (
-                  <circle key={`flow-${link.id}`} r='3.1' fill='currentColor'>
-                    <animateMotion
-                      dur={link.dur}
-                      begin={`-${index * 1.15}s`}
-                      repeatCount='indefinite'
-                      path={link.d}
+
+              {wires.map(wire => {
+                const hot = activeId && wire.ids.includes(activeId);
+                return (
+                  <span
+                    key={wire.id}
+                    aria-hidden='true'
+                    className={`iso-wire${hot ? " is-active" : ""}`}
+                    style={{"--from": wire.from, "--to": wire.to}}
+                  />
+                );
+              })}
+
+              {traces.map(trace => {
+                const hot = activeId && (activeId === trace.node || activeId === "backend");
+                return (
+                  <span
+                    key={trace.id}
+                    aria-hidden='true'
+                    className={`iso-trace${hot ? " is-active" : ""}`}
+                    style={{
+                      "--layer": 3,
+                      "--angle": `${trace.angle}deg`,
+                      "--len": `${trace.length}px`,
+                    }}
+                  />
+                );
+              })}
+
+              {flowing && (
+                <>
+                  {wires.map(wire => (
+                    <span
+                      key={`packet-${wire.id}`}
+                      aria-hidden='true'
+                      className='iso-packet'
+                      style={{
+                        "--z0": `calc((2 - ${wire.from}) * var(--pitch) - 12px)`,
+                        "--z1": `calc((2 - ${wire.to}) * var(--pitch) + 44px)`,
+                        "--x1": "0px",
+                        "--y1": "0px",
+                        animationDuration: wire.dur,
+                        animationDelay: wire.delay,
+                      }}
                     />
-                  </circle>
-                ))}
-            </svg>
-            {nodes.map(node => (
-              <NodeButton
-                key={node.id}
-                node={node}
-                active={activeId === node.id}
-                positioned
-                {...bindNode(node)}
-              />
-            ))}
+                  ))}
+                </>
+              )}
+
+              {nodes.map(node => (
+                <NodeButton
+                  key={node.id}
+                  node={node}
+                  active={activeId === node.id}
+                  floating
+                  {...bindNode(node)}
+                />
+              ))}
+            </div>
           </div>
         </div>
         <ol className='arch-stack'>

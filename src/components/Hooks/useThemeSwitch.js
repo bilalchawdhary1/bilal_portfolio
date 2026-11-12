@@ -1,53 +1,26 @@
-import React, {useState, useEffect} from "react";
+import {useEffect, useState} from "react";
 
+// Dark is the default. A visitor's explicit choice is stored in localStorage
+// and applied before hydration by the inline script in _document.js.
 export function useThemeSwitch() {
-  const preferDarkQuery = "(prefers-color-scheme: dark)";
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState("dark");
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia(preferDarkQuery);
-    const userPref = window.localStorage.getItem("theme");
-
-    const handleChange = () => {
-      if (userPref) {
-        let check = userPref === "dark" ? "dark" : "light";
-        setMode(check);
-        if (check === "dark") {
-          document.documentElement.classList.add("dark");
-        } else {
-          document.documentElement.classList.remove("dark");
-        }
-        return check;
-      } else {
-        setMode(mediaQuery.matches ? "dark" : "light");
-        window.localStorage.setItem(
-          "theme",
-          mediaQuery.matches ? "dark" : "light"
-        );
-        if (mediaQuery.matches) {
-          document.documentElement.classList.add("dark");
-        } else {
-          document.documentElement.classList.remove("dark");
-        }
-        return window.matchMedia(preferDarkQuery).matches ? "dark" : "light";
-      }
-    };
-
-    handleChange();
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
+    let stored = null;
+    try {
+      stored = window.localStorage.getItem("theme");
+    } catch {
+      // Storage can be unavailable (private mode); fall back to the default.
+    }
+    if (stored === "light") setMode("light");
   }, []);
 
   useEffect(() => {
-    if (mode === "dark") {
-      document.documentElement.classList.add("dark");
-      window.localStorage.setItem("theme", "dark");
-    }
-
-    if (mode === "light") {
-      document.documentElement.classList.remove("dark");
-      window.localStorage.setItem("theme", "light");
+    document.documentElement.classList.toggle("dark", mode === "dark");
+    try {
+      window.localStorage.setItem("theme", mode);
+    } catch {
+      // Ignore storage failures; the theme still applies for this session.
     }
   }, [mode]);
 

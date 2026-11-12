@@ -23,7 +23,9 @@ export default function Home() {
         <Layout className='!py-8 sm:!py-6'>
           <section className='grid min-h-[calc(100svh-9.5rem)] grid-cols-[minmax(0,1.05fr)_minmax(300px,0.95fr)] items-center gap-14 py-6 lg:min-h-0 lg:grid-cols-1 lg:gap-10 md:py-8'>
             <div className='max-w-xl'>
-              <p className='eyebrow hero-enter hero-enter-1'>Portfolio</p>
+              <p className='eyebrow hero-enter hero-enter-1'>
+                AI applications &amp; Python backends
+              </p>
               <h1 className='hero-enter hero-enter-2 text-balance text-6xl font-semibold leading-[1.02] tracking-[-0.045em] xl:text-5xl sm:text-4xl'>
                 Muhammad Bilal
               </h1>
