@@ -7,6 +7,7 @@ import Link from "next/link";
 import aiMockImage from "../../public/images/projects/AI_Mock.png";
 import mentraImage from "../../public/images/projects/Mentra.png";
 import styleNestImage from "../../public/images/projects/StyleNest.png";
+import sharpBuildImage from "../../public/images/projects/SharpBuild.png";
 
 const projectActionClassName =
   "inline-flex min-h-11 w-fit items-center justify-center rounded-lg border border-dark/20 px-4 py-2 text-sm font-semibold transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light/20 dark:hover:border-primaryDark dark:hover:text-primaryDark dark:focus-visible:ring-primaryDark dark:focus-visible:ring-offset-dark";
@@ -20,7 +21,7 @@ const supportingProjects = [
       "A tutorial-based voice learning platform with AI tutors, bookmarks, and recent sessions.",
     image: {
       src: mentraImage,
-      alt: "Mentra AI teaching assistant project preview",
+      alt: "Illustration of a voice-learning dashboard with tutor and microphone controls",
     },
     tagsLabel: "Technologies",
     tags: ["Next.js", "TypeScript", "Vapi", "Clerk", "Supabase"],
@@ -39,7 +40,7 @@ const supportingProjects = [
       "Practice mock interviews with AI, then use smart suggestions and a readiness score to identify what to work on next.",
     image: {
       src: aiMockImage,
-      alt: "AI mock interview platform project preview",
+      alt: "Illustration of an interview dashboard with candidate video and readiness score",
     },
     tagsLabel: "Highlights",
     tags: [
@@ -64,7 +65,7 @@ const supportingProjects = [
       "A fashion and lifestyle storefront centered on product discovery, category browsing, and new arrivals.",
     image: {
       src: styleNestImage,
-      alt: "StyleNest e-commerce web application",
+      alt: "Illustration of a fashion storefront with a campaign model and product grid",
     },
     tagsLabel: "Highlights",
     tags: [
@@ -94,12 +95,12 @@ const ProjectCard = ({project}) => (
     className='surface-card surface-card-interactive group flex h-full flex-col overflow-hidden rounded-2xl border'
   >
     {project.image && (
-      <div className='relative aspect-[16/9] overflow-hidden border-b border-dark/10 bg-[#f3f5f9] dark:border-light/10 dark:bg-[#171c25]'>
+      <div className='relative aspect-[16/10] overflow-hidden border-b border-dark/10 bg-[#f3f5f9] dark:border-light/10 dark:bg-[#171c25]'>
         <Image
           src={project.image.src}
           alt={project.image.alt}
           fill
-          className='object-contain transition-transform duration-300 group-hover:scale-[1.02]'
+          className='object-cover transition-transform duration-500 group-hover:scale-[1.025]'
           sizes='(max-width: 767px) calc(100vw - 2.5rem), (max-width: 1279px) calc((100vw - 5rem) / 2), 38rem'
         />
       </div>
@@ -182,22 +183,33 @@ const SharpBuildProject = () => (
         </div>
       </div>
 
-      <div className='flex flex-col justify-center rounded-2xl border border-dark/5 bg-light/75 p-6 dark:border-light/5 dark:bg-[#151a23]/75 sm:p-5'>
-        <p className='text-xs font-bold uppercase tracking-[0.16em] text-dark/55 dark:text-light/55'>
-          System at a glance
-        </p>
-        <p className='mt-3 text-sm leading-6 text-dark/75 dark:text-light/75'>
-          A focused retrieval pipeline keeps answers tied to the website’s
-          indexed material.
-        </p>
-        <Link
-          href='https://github.com/bilalchawdhary1/SharpBuild-AI-Website-Assistant'
-          target='_blank'
-          rel='noopener noreferrer'
-          className={`${projectActionClassName} mt-5`}
-        >
-          Explore the public repository
-        </Link>
+        <div className='flex flex-col justify-center gap-4 rounded-2xl border border-dark/5 bg-light/75 p-4 dark:border-light/5 dark:bg-[#151a23]/75 sm:p-5'>
+        <div className='relative aspect-[16/10] overflow-hidden rounded-xl'>
+          <Image
+            src={sharpBuildImage}
+            alt='Illustration of a website assistant with grounded chat and source citations'
+            fill
+            className='object-cover'
+            sizes='(max-width: 1023px) 100vw, 30vw'
+          />
+        </div>
+        <div className='px-1 pb-1'>
+          <p className='text-xs font-bold uppercase tracking-[0.16em] text-dark/55 dark:text-light/55'>
+            System at a glance
+          </p>
+          <p className='mt-3 text-sm leading-6 text-dark/75 dark:text-light/75'>
+            A focused retrieval pipeline keeps answers tied to the website’s
+            indexed material.
+          </p>
+          <Link
+            href='https://github.com/bilalchawdhary1/SharpBuild-AI-Website-Assistant'
+            target='_blank'
+            rel='noopener noreferrer'
+            className={`${projectActionClassName} mt-5`}
+          >
+            Explore the public repository
+          </Link>
+        </div>
       </div>
     </div>
 

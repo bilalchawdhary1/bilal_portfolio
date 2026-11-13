@@ -7,10 +7,10 @@ import {useEffect, useRef} from "react";
 
 const SPACING = 32;
 const MAX_DOTS = 2400;
-const RADIUS = 180;
-const MAX_PUSH = 14;
+const RADIUS = 240;
+const MAX_PUSH = 20;
 const REST_SIZE = 1.5;
-const MAX_LEN = 11;
+const MAX_LEN = 16;
 
 const lerpAngle = (from, to, amount) => {
   const diff = Math.atan2(Math.sin(to - from), Math.cos(to - from));
