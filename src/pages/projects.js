@@ -201,14 +201,26 @@ const SharpBuildProject = () => (
             A focused retrieval pipeline keeps answers tied to the website’s
             indexed material.
           </p>
-          <Link
-            href='https://github.com/bilalchawdhary1/SharpBuild-AI-Website-Assistant'
-            target='_blank'
-            rel='noopener noreferrer'
-            className={`${projectActionClassName} mt-5`}
-          >
-            Explore the public repository
-          </Link>
+          <div className='mt-5 flex flex-wrap gap-2'>
+            <Link
+              href='https://sharp-build-ai-website-assistant-op.vercel.app/'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Open the live SharpBuild AI Website Assistant'
+              className={projectActionClassName}
+            >
+              View live site
+            </Link>
+            <Link
+              href='https://github.com/bilalchawdhary1/SharpBuild-AI-Website-Assistant'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Explore the SharpBuild public repository'
+              className={projectActionClassName}
+            >
+              Explore the public repository
+            </Link>
+          </div>
         </div>
       </div>
     </div>
