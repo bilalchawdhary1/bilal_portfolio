@@ -6,6 +6,7 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ScrollReveal";
 import Skills from "@/components/Skills";
 import Services from "@/components/Services";
+import ContactCTA from "@/components/ContactCTA";
 import TransitionEffect from "@/components/TransitionEffect";
 import Link from "next/link";
 
@@ -14,7 +15,7 @@ export default function Home() {
     <>
       <SEO
         title='AI Application Developer &amp; Python Backend Engineer | Muhammad Bilal'
-        description='Muhammad Bilal builds practical AI applications, integrates LLMs, and develops reliable Python backend systems for businesses and startups.'
+        description='Muhammad Bilal builds AI applications, agents, and chatbots with full-stack expertise and reliable Python backends for startups and product teams.'
         path='/'
         person
       />
@@ -25,7 +26,7 @@ export default function Home() {
           <section className='grid min-h-[calc(100svh-9.5rem)] grid-cols-[minmax(0,1.05fr)_minmax(300px,0.95fr)] items-center gap-14 py-6 lg:min-h-0 lg:grid-cols-1 lg:gap-10 md:py-8'>
             <div className='max-w-xl'>
               <p className='eyebrow hero-enter hero-enter-1'>
-                AI applications &amp; Python backends
+                Full-stack AI apps &amp; Python backends
               </p>
               <h1 className='hero-enter hero-enter-2 text-balance text-6xl font-semibold leading-[1.02] tracking-[-0.045em] xl:text-5xl sm:text-4xl'>
                 Muhammad Bilal
@@ -36,21 +37,21 @@ export default function Home() {
                   aria-hidden='true'
                   className='px-2 text-dark/30 dark:text-light/30'
                 >
-                  /
+                  ·
                 </span>
                 Python Backend Engineer
               </p>
               <p className='hero-enter hero-enter-4 mt-6 max-w-lg text-lg leading-8 text-dark/70 dark:text-light/65 md:text-base md:leading-7'>
-                I build AI-powered applications, intelligent chatbots, and
-                Python backends that solve real product problems—LLM
-                integrations, REST APIs, and data systems included.
+                I build AI applications, agents, and chatbots that solve real
+                product problems—backed by thoughtful LLM integrations and
+                reliable Python APIs.
               </p>
               <div className='hero-enter hero-enter-5 mt-8 flex flex-wrap items-center gap-3'>
-                <Link href='/projects/' className='btn btn-primary'>
-                  View My Work
+                <Link href='/contact/' className='btn btn-primary'>
+                  Discuss a project
                 </Link>
-                <Link href='/contact/' className='btn btn-ghost'>
-                  Let&apos;s Discuss Your Project
+                <Link href='/projects/' className='btn btn-ghost'>
+                  Explore selected work
                 </Link>
               </div>
               <div
@@ -87,6 +88,7 @@ export default function Home() {
           <Services />
           <Skills />
           <Experience />
+          <ContactCTA />
         </ScrollReveal>
       </main>
     </>

@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = "https://muhammadbilal-lime.vercel.app";
+const DEFAULT_SITE_URL = "https://bilalchawdhary.vercel.app";
 const configuredSiteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || DEFAULT_SITE_URL;
 const parsedSiteUrl = new URL(configuredSiteUrl);

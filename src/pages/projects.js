@@ -13,6 +13,7 @@ const projectActionClassName =
 
 const supportingProjects = [
   {
+    id: "mentra",
     title: "Mentra",
     category: "Tutorial-based voice AI learning",
     summary:
@@ -31,9 +32,11 @@ const supportingProjects = [
     ],
   },
   {
+    id: "ai-mock-interview-platform",
     title: "AI Mock Interview Platform",
     category: "AI interview practice",
-    summary: "An AI-powered interview practice application.",
+    summary:
+      "Practice mock interviews with AI, then use smart suggestions and a readiness score to identify what to work on next.",
     image: {
       src: aiMockImage,
       alt: "AI mock interview platform project preview",
@@ -54,9 +57,11 @@ const supportingProjects = [
     ],
   },
   {
+    id: "stylenest",
     title: "StyleNest",
     category: "E-commerce web application",
-    summary: "An e-commerce web application.",
+    summary:
+      "A fashion and lifestyle storefront centered on product discovery, category browsing, and new arrivals.",
     image: {
       src: styleNestImage,
       alt: "StyleNest e-commerce web application",
@@ -84,6 +89,7 @@ const supportingProjects = [
 
 const ProjectCard = ({project}) => (
   <article
+    id={project.id}
     data-scroll-reveal
     className='surface-card surface-card-interactive group flex h-full flex-col overflow-hidden rounded-2xl border'
   >
@@ -145,6 +151,7 @@ const ProjectCard = ({project}) => (
 
 const SharpBuildProject = () => (
   <article
+    id='sharpbuild-ai-website-assistant'
     data-scroll-reveal
     className='surface-card overflow-hidden rounded-[1.75rem] border'
   >

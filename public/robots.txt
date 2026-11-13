@@ -4,7 +4,7 @@ Allow: /
 Disallow: /api/
 
 # Host
-Host: https://muhammadbilal-lime.vercel.app
+Host: https://bilalchawdhary.vercel.app
 
 # Sitemaps
-Sitemap: https://muhammadbilal-lime.vercel.app/sitemap.xml
+Sitemap: https://bilalchawdhary.vercel.app/sitemap.xml

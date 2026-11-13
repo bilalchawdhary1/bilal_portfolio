@@ -1,23 +1,27 @@
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ScrollReveal";
-import Skills from "@/components/Skills";
+import ContactCTA from "@/components/ContactCTA";
 import TransitionEffect from "@/components/TransitionEffect";
 import Image from "next/image";
 import profile from "../../public/images/profile/Riley.png";
 
-const services = [
-  "AI application development",
-  "AI agent development",
-  "AI chatbot development",
-  "OpenAI API integration",
-  "Google Gemini integration",
-  "LLM integration and prompt engineering",
-  "Python and FastAPI backend development",
-  "REST API development",
-  "PostgreSQL database integration",
-  "Full-stack SaaS development",
-  "AI workflow automation",
+const focusAreas = [
+  {
+    title: "AI applications",
+    description:
+      "Integrate LLM capabilities into real product workflows instead of adding AI for its own sake.",
+  },
+  {
+    title: "Agents and chatbots",
+    description:
+      "Build task-focused conversational experiences with useful context and a clear path to human help.",
+  },
+  {
+    title: "Python backends",
+    description:
+      "Develop APIs and database-backed systems that support the product beyond the interface.",
+  },
 ];
 
 export default function About() {
@@ -25,7 +29,7 @@ export default function About() {
     <>
       <SEO
         title='About Muhammad Bilal'
-        description='Learn about Muhammad Bilal, an AI Application Developer and Python Backend Engineer building AI-powered products and reliable backend systems.'
+        description='Learn about Muhammad Bilal, an AI Application Developer and Python Backend Engineer building full-stack AI products and reliable backends.'
         path='/about'
       />
 
@@ -72,31 +76,40 @@ export default function About() {
             </section>
 
             <section
-              aria-labelledby='services-heading'
+              aria-labelledby='focus-heading'
               className='mt-20 sm:mt-14'
             >
               <div className='mb-7 max-w-2xl' data-scroll-reveal>
-                <p className='eyebrow'>How I can help</p>
+                <p className='eyebrow'>Areas of focus</p>
                 <h2
-                  id='services-heading'
-                  className='text-3xl font-semibold tracking-tight sm:text-2xl'
+                  id='focus-heading'
+                  className='text-balance text-3xl font-semibold tracking-tight sm:text-2xl'
                 >
-                  Services
+                  From AI capability to product experience
                 </h2>
               </div>
-              <ul
-                data-scroll-reveal
-                className='surface-card flex flex-wrap gap-2.5 rounded-2xl border p-6 sm:p-5'
-              >
-                {services.map(service => (
-                  <li key={service} className='chip chip-lg'>
-                    {service}
-                  </li>
+              <div className='grid grid-cols-3 gap-4 md:grid-cols-1'>
+                {focusAreas.map((area, index) => (
+                  <article
+                    key={area.title}
+                    data-scroll-reveal
+                    className='surface-card surface-card-interactive accent-card rounded-2xl border p-6 sm:p-5'
+                  >
+                    <p className='mb-8 font-mono text-xs font-semibold tracking-widest text-primary dark:text-primaryDark'>
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <h3 className='text-lg font-semibold tracking-tight'>
+                      {area.title}
+                    </h3>
+                    <p className='mt-3 text-sm leading-6 text-dark/70 dark:text-light/70'>
+                      {area.description}
+                    </p>
+                  </article>
                 ))}
-              </ul>
+              </div>
             </section>
           </Layout>
-          <Skills />
+          <ContactCTA />
         </ScrollReveal>
       </main>
     </>

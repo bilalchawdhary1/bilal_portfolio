@@ -3,21 +3,21 @@ const services = [
     number: "01",
     title: "AI product integration",
     description:
-      "Add OpenAI or Gemini capabilities to an existing product with clear, useful user flows.",
+      "Integrate LLM capabilities into an existing product with focused user flows, thoughtful prompts, and API connections.",
     stack: ["OpenAI", "Gemini", "LLM integration"],
   },
   {
     number: "02",
     title: "AI assistants and workflows",
     description:
-      "Build chat and voice assistants, knowledge search, and workflow automation around real product needs.",
-    stack: ["Chat", "Voice", "Knowledge search", "Automation"],
+      "Build AI agents, chatbots, and knowledge assistants for focused text or voice experiences.",
+    stack: ["AI agents", "Chatbots", "Voice", "Knowledge search"],
   },
   {
     number: "03",
     title: "Python backends and SaaS",
     description:
-      "Develop FastAPI services, REST APIs, database-backed features, and full-stack product experiences.",
+      "Develop FastAPI services, REST APIs, and database-backed features to support product and SaaS workflows.",
     stack: ["FastAPI", "REST APIs", "PostgreSQL", "MongoDB"],
   },
 ];

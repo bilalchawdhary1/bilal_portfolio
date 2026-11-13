@@ -187,6 +187,25 @@ div#__next {
     color 180ms ease;
 }
 
+.btn:focus-visible,
+.site-nav-link:focus-visible {
+  outline: 2px solid #2c5fd0;
+  outline-offset: 3px;
+}
+
+.dark .btn:focus-visible,
+.dark .site-nav-link:focus-visible {
+  outline-color: #8eb4ff;
+}
+
+.site-nav-link.site-nav-cta:hover {
+  color: #fff;
+}
+
+.dark .site-nav-link.site-nav-cta:hover {
+  color: #071018;
+}
+
 .btn-primary {
   border: 1px solid transparent;
   background: #2c5fd0;
@@ -267,6 +286,18 @@ div#__next {
 
 .site-nav-link {
   position: relative;
+}
+
+.site-nav-link.site-nav-cta::after {
+  display: none;
+}
+
+.site-nav-link.site-nav-cta:hover {
+  color: #fff;
+}
+
+.dark .site-nav-link.site-nav-cta:hover {
+  color: #071018;
 }
 
 .site-nav-link::after {

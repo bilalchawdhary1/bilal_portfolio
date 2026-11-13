@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 const Logo = () => {
   return (

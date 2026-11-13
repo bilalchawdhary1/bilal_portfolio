@@ -1,6 +1,6 @@
 import {motion} from "motion/react";
 import {useRouter} from "next/router";
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import Link from "next/link";
 import Logo from "./Logo";
 import {GithubIcon, LinkedInIcon, MoonIcon, SunIcon} from "./Icons";
@@ -33,15 +33,21 @@ const NavigationLink = ({href, title, onClick, mobile = false}) => {
     href === "/"
       ? router.pathname === href
       : router.pathname === href || router.pathname.startsWith(`${href}/`);
+  const isContact = href === "/contact";
+  const linkStyle = isContact
+    ? `btn btn-primary site-nav-cta ${mobile ? "my-2 w-full" : "min-h-10 px-4"}`
+    : `${mobile ? "block py-2.5 text-base" : "px-1 py-2"} ${
+        isActive
+          ? "text-primary dark:text-primaryDark"
+          : "text-dark/75 dark:text-light/75"
+      }`;
 
   return (
     <Link
       href={href}
       onClick={onClick}
       aria-current={isActive ? "page" : undefined}
-      className={`site-nav-link rounded-md text-sm font-medium transition-colors hover:text-primary dark:hover:text-primaryDark ${
-        mobile ? "block py-2 text-base" : "px-1 py-2"
-      } ${isActive ? "text-primary dark:text-primaryDark" : "text-dark/75 dark:text-light/75"}`}
+      className={`site-nav-link rounded-md text-sm font-medium transition-colors hover:text-primary dark:hover:text-primaryDark ${linkStyle}`}
     >
       {title}
     </Link>
@@ -88,9 +94,20 @@ const ThemeButton = ({mode, setMode}) => (
 const Navbar = () => {
   const [mode, setMode] = useThemeSwitch();
   const [isOpen, setIsOpen] = useState(false);
+  const menuButtonRef = useRef(null);
+
+  const handleKeyDown = event => {
+    if (event.key === "Escape" && isOpen) {
+      setIsOpen(false);
+      menuButtonRef.current?.focus();
+    }
+  };
 
   return (
-    <header className='sticky top-0 z-50 border-b border-dark/10 bg-light/92 backdrop-blur-md dark:border-white/[0.06] dark:bg-dark/92'>
+    <header
+      onKeyDown={handleKeyDown}
+      className='sticky top-0 z-50 border-b border-dark/10 bg-light/92 backdrop-blur-md dark:border-white/[0.06] dark:bg-dark/92'
+    >
       <div className='mx-auto flex max-w-7xl items-center justify-between gap-6 px-8 py-4 sm:px-5'>
         <Logo />
 
@@ -106,6 +123,7 @@ const Navbar = () => {
           </div>
           <ThemeButton mode={mode} setMode={setMode} />
           <button
+            ref={menuButtonRef}
             type='button'
             className='hidden h-10 w-10 items-center justify-center rounded-full border border-dark/10 bg-white text-dark transition-colors hover:border-primary/40 hover:text-primary dark:border-white/10 dark:bg-card dark:text-light dark:hover:border-primaryDark/50 dark:hover:text-primaryDark lg:flex'
             aria-label={isOpen ? "Close main menu" : "Open main menu"}

@@ -15,19 +15,17 @@ const experience = [
     type: "Full-time",
     time: "December 2025 – October 2026",
     description:
-      "Worked with engineering teams to turn business requirements into technical solutions.",
+      "Translated business requirements into technical solutions in collaboration with engineering teams.",
   },
   {
     position: "Frontend Developer",
     company: "Ads Analytica",
     time: "January 2024 – November 2025",
-    description: "Frontend developer working on user interfaces.",
   },
   {
     position: "Frontend Developer Intern",
     company: "Gamicacloud",
     time: "December 2021 – February 2022",
-    description: "Internship in frontend development.",
   },
 ];
 

@@ -8,33 +8,39 @@ const pipeline = ["Crawl", "Index", "Retrieve", "Answer"];
 
 const work = [
   {
+    slug: "sharpbuild-ai-website-assistant",
+    title: "SharpBuild AI Website Assistant",
+    label: "Retrieval-backed AI assistant",
+    description:
+      "Answers questions from published website content, with source links and a human contact path when more help is needed.",
+    tags: ["FastAPI", "Gemini", "PostgreSQL", "pgvector", "Next.js"],
+  },
+  {
+    slug: "mentra",
     title: "Mentra",
     label: "Tutorial-based voice AI learning",
     description:
-      "A tutorial-based voice learning platform with AI tutors, bookmarks, and recent sessions.",
+      "A voice-learning platform with AI tutors, bookmarks, and recent sessions.",
     image: mentraImage,
     alt: "Mentra project preview",
     tags: ["Next.js", "TypeScript", "Vapi", "Clerk", "Supabase"],
   },
   {
+    slug: "ai-mock-interview-platform",
     title: "AI Mock Interview Platform",
     label: "AI interview practice",
-    description: "An AI-powered interview practice application.",
+    description:
+      "Practice interview questions, review performance, and turn feedback into a readiness score.",
     image: mockInterviewImage,
     alt: "AI Mock Interview Platform preview",
-    tags: [
-      "AI mock interviews",
-      "Performance analysis",
-      "Question bank",
-      "Smart suggestions",
-      "Readiness score",
-    ],
+    tags: ["AI mock interviews", "Question bank", "Smart suggestions"],
   },
   {
+    slug: "stylenest",
     title: "StyleNest",
     label: "E-commerce platform",
     description:
-      "A modern e-commerce platform for fashion and lifestyle products.",
+      "A fashion and lifestyle storefront with product discovery and category browsing.",
     image: styleNestImage,
     alt: "StyleNest project preview",
     tags: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
@@ -87,11 +93,12 @@ const FeaturedWork = () => (
       </Link>
     </div>
 
-    <ul className='grid grid-cols-3 gap-4 lg:grid-cols-1'>
+    <ul className='grid grid-cols-2 gap-5 lg:grid-cols-1'>
       {work.map(item => (
         <li key={item.title} data-scroll-reveal className='flex'>
           <Link
-            href='/projects/'
+            href={`/projects/#${item.slug}`}
+            aria-label={`Read the ${item.title} project details`}
             className='surface-card surface-card-interactive accent-card flex w-full flex-col rounded-2xl border focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-primaryDark'
           >
             {item.image ? (
@@ -100,7 +107,7 @@ const FeaturedWork = () => (
                   src={item.image}
                   alt={item.alt}
                   className='h-full w-full object-cover'
-                  sizes='(max-width: 1023px) 100vw, 33vw'
+                  sizes='(max-width: 1023px) 100vw, 50vw'
                 />
               </div>
             ) : (

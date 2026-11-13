@@ -11,7 +11,7 @@ import {useRef} from "react";
 import TransitionEffect from "@/components/TransitionEffect";
 import {HireMe2} from "@/components/HireMe2";
 
-const FramerImage = motion(Image);
+const FramerImage = motion.create(Image);
 
 const MovingImg = ({title, img, link}) => {
   const x = useMotionValue(0);

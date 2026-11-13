@@ -2,23 +2,25 @@ import React from "react";
 
 const skillGroups = [
   {
+    title: "AI & LLMs",
+    blurb: "Model integration and conversational products",
+    skills: [
+      "AI agents",
+      "Chatbots",
+      "OpenAI",
+      "Google Gemini",
+      "LLM integration",
+      "Prompt engineering",
+    ],
+  },
+  {
     title: "Backend",
     blurb: "Services, APIs and data access",
     skills: ["Python", "FastAPI", "REST APIs", "SQL"],
   },
   {
-    title: "AI & LLMs",
-    blurb: "Model integration in products",
-    skills: ["OpenAI", "Google Gemini", "LLM integration", "Prompt engineering"],
-  },
-  {
-    title: "Databases",
-    blurb: "Relational and document storage",
-    skills: ["PostgreSQL", "MongoDB"],
-  },
-  {
-    title: "Frontend & tools",
-    blurb: "Interfaces and everyday workflow",
+    title: "Full-stack development",
+    blurb: "Product interfaces and application workflows",
     skills: [
       "React.js",
       "Next.js",
@@ -28,6 +30,11 @@ const skillGroups = [
       "GitHub",
       "Tailwind CSS",
     ],
+  },
+  {
+    title: "Databases",
+    blurb: "Relational and document storage",
+    skills: ["PostgreSQL", "MongoDB"],
   },
 ];
 
@@ -45,8 +52,8 @@ const Skills = () => (
         Skills &amp; toolkit
       </h2>
       <p className='mt-3 text-sm leading-6 text-dark/70 dark:text-light/70'>
-        The tools I use to build AI-powered products, from model integration to
-        the interface people actually see.
+        From AI agents and chatbots to the Python APIs and interfaces that
+        support them.
       </p>
     </div>
 

@@ -2,7 +2,9 @@ import Head from "next/head";
 
 const SITE_NAME = "Muhammad Bilal";
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://muhammadbilal-lime.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.SITE_URL ||
+  "https://bilalchawdhary.vercel.app";
 
 const SEO = ({
   title,
