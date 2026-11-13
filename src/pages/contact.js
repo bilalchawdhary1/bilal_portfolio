@@ -58,16 +58,22 @@ export default function Contact() {
     name: "",
     email: "",
     message: "",
+    botField: "",
   });
   const [submissionError, setSubmissionError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = e => {
-    setFormData({...formData, [e.target.name]: e.target.value});
+    const {name, value} = e.target;
+    setFormData(current => ({...current, [name]: value}));
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
+    if (isSubmitting) return;
+
     setSubmissionError("");
+    setIsSubmitting(true);
 
     try {
       const response = await fetch("/api/sendMail", {
@@ -79,7 +85,7 @@ export default function Contact() {
       });
 
       if (response.ok) {
-        router.push("/thanks");
+        await router.push("/thanks");
       } else {
         console.error("Form submission failed!", await response.text());
         setSubmissionError(
@@ -91,6 +97,8 @@ export default function Contact() {
       setSubmissionError(
         "We couldn't send your message. Please try again or email chbilalc627@gmail.com directly.",
       );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -108,23 +116,22 @@ export default function Contact() {
           <header className='mb-10 max-w-3xl'>
             <p className='eyebrow'>Get in touch</p>
             <h1 className='text-balance text-5xl font-semibold tracking-tight sm:text-4xl'>
-              Let’s talk about your project.
+              Tell me what you’re building.
             </h1>
             <p className='mt-4 max-w-xl text-base leading-7 text-dark/70 dark:text-light/70'>
-              Send a short note about what you are building, or reach out
-              directly using any of the links below.
+              Share the problem you want to solve and what a good outcome
+              looks like. A short note is enough, or reach out directly.
             </p>
           </header>
 
           <section className='grid grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gap-6 lg:grid-cols-1'>
             <div className='surface-card flex flex-col rounded-2xl border p-7 sm:p-5'>
               <h2 className='text-xl font-semibold tracking-tight'>
-                Let’s build something useful
+                A practical first conversation
               </h2>
               <p className='mt-4 text-sm leading-6 text-dark/70 dark:text-light/70'>
-                Have a product idea or need to add AI capabilities to an
-                existing product? Get in touch to discuss AI applications, LLM
-                integrations, intelligent workflows, or Python backend work.
+                Tell me what you’re building, what you want it to do, and any
+                constraints you already know. We can work from there.
               </p>
 
               <ul className='mb-7 mt-7 space-y-3'>
@@ -177,15 +184,30 @@ export default function Contact() {
                 name='contact-form'
                 method='POST'
                 onSubmit={handleSubmit}
+                aria-busy={isSubmitting}
                 className='space-y-5'
               >
-                <input type='hidden' name='form-name' value='contact-form' />
-                <p className='hidden'>
-                  <label>
-                    Name
-                    <input name='bot-field' />
-                  </label>
-                </p>
+                <div className='sr-only' aria-hidden='true'>
+                  <label htmlFor='company-website'>Leave this field empty</label>
+                  <input
+                    id='company-website'
+                    type='text'
+                    name='botField'
+                    tabIndex={-1}
+                    autoComplete='off'
+                    value={formData.botField}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <p className='eyebrow'>Project inquiry</p>
+                  <h2 className='text-xl font-semibold tracking-tight'>
+                    Tell me a little about it
+                  </h2>
+                  <p className='mt-2 text-sm leading-6 text-dark/65 dark:text-light/65'>
+                    No formal brief needed. I’ll follow up by email.
+                  </p>
+                </div>
 
                 <div>
                   <label
@@ -199,10 +221,11 @@ export default function Contact() {
                     type='text'
                     name='name'
                     required
+                    maxLength={100}
                     autoComplete='name'
                     value={formData.name}
                     onChange={handleChange}
-                    className='w-full rounded-lg border border-dark/15 bg-white/60 px-4 py-3 text-sm text-dark dark:border-light/20 dark:bg-black/15 dark:text-light'
+                    className='w-full rounded-lg border border-dark/15 bg-white/60 px-4 py-3 text-sm text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light/20 dark:bg-black/15 dark:text-light dark:focus-visible:ring-primaryDark dark:focus-visible:ring-offset-dark'
                   />
                 </div>
 
@@ -218,10 +241,11 @@ export default function Contact() {
                     type='email'
                     name='email'
                     required
+                    maxLength={254}
                     autoComplete='email'
                     value={formData.email}
                     onChange={handleChange}
-                    className='w-full rounded-lg border border-dark/15 bg-white/60 px-4 py-3 text-sm text-dark dark:border-light/20 dark:bg-black/15 dark:text-light'
+                    className='w-full rounded-lg border border-dark/15 bg-white/60 px-4 py-3 text-sm text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light/20 dark:bg-black/15 dark:text-light dark:focus-visible:ring-primaryDark dark:focus-visible:ring-offset-dark'
                   />
                 </div>
 
@@ -236,18 +260,24 @@ export default function Contact() {
                     id='message'
                     name='message'
                     required
+                    maxLength={5000}
                     rows='5'
                     value={formData.message}
                     onChange={handleChange}
-                    className='w-full resize-y rounded-lg border border-dark/15 bg-white/60 px-4 py-3 text-sm text-dark dark:border-light/20 dark:bg-black/15 dark:text-light'
+                    className='w-full resize-y rounded-lg border border-dark/15 bg-white/60 px-4 py-3 text-sm text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-light/20 dark:bg-black/15 dark:text-light dark:focus-visible:ring-primaryDark dark:focus-visible:ring-offset-dark'
                   />
                 </div>
 
-                <button type='submit' className='btn btn-primary'>
-                  Send message
+                <button
+                  type='submit'
+                  disabled={isSubmitting}
+                  className='btn btn-primary disabled:cursor-not-allowed disabled:opacity-65'
+                >
+                  {isSubmitting ? "Sending message…" : "Send message"}
                 </button>
                 {submissionError && (
                   <p
+                    id='submission-error'
                     className='text-sm font-medium text-red-700 dark:text-red-300'
                     role='alert'
                   >
